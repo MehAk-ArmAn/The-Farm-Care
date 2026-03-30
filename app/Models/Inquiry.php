@@ -9,12 +9,7 @@ class Inquiry extends Model
     protected $fillable = [
         'name',
         'email',
-        'phone',
         'company',
-        'country',
-        'subject',
         'message',
-        'product_name',
-        'is_read',
     ];
 }

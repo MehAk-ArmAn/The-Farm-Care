@@ -1,0 +1,157 @@
+/* =========================================================
+   THE FARM CARE - HOMEPAGE PREMIUM INTERACTIONS
+   Keep this file only for homepage custom polish
+   ========================================================= */
+
+.hero-premium .hero-image {
+    transform: scale(1.02);
+    transition: transform 8s ease;
+}
+
+.hero-premium:hover .hero-image {
+    transform: scale(1.08);
+}
+
+/* Premium buttons */
+.premium-btn {
+    position: relative;
+    overflow: hidden;
+    transition: transform .25s ease, box-shadow .25s ease, background .25s ease, border-color .25s ease;
+    will-change: transform;
+    padding: 12px 26px 12px 20px;
+}
+
+.premium-btn::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(120deg, transparent, rgba(255,255,255,.22), transparent);
+    transform: translateX(-120%);
+    transition: transform .7s ease;
+}
+
+.premium-btn:hover::before {
+    transform: translateX(120%);
+}
+
+.premium-btn:hover {
+    transform: translateY(-3px);
+}
+
+.premium-btn-primary,
+.premium-btn-green {
+    background: linear-gradient(135deg, var(--brand-green), #15803d);
+    box-shadow: 0 16px 32px rgba(22, 163, 74, .22);
+}
+
+.premium-btn-primary:hover,
+.premium-btn-green:hover {
+    box-shadow: 0 20px 40px rgba(22, 163, 74, .32);
+}
+
+.premium-btn-secondary,
+.premium-btn-light {
+    border: 1px solid rgba(255,255,255,.18);
+    background: rgba(255,255,255,.12);
+    backdrop-filter: blur(10px);
+}
+
+.premium-btn-light {
+    border-color: rgb(226 232 240);
+    background: white;
+}
+
+/* Slider arrows */
+.slider-arrow:hover {
+    transform: translateY(-50%) scale(1.08);
+    background: rgba(15, 23, 42, .6);
+    box-shadow: 0 12px 30px rgba(0,0,0,.18);
+}
+
+/* Interactive cards */
+.interactive-card,
+.product-card,
+.interactive-dark-card {
+    transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease, background .3s ease;
+    will-change: transform;
+    transform-style: preserve-3d;
+}
+
+.interactive-card:hover,
+.product-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 24px 50px rgba(15, 23, 42, .10);
+    border-color: rgba(22, 163, 74, .15);
+}
+
+.interactive-dark-card:hover {
+    transform: translateY(-10px);
+    background: rgba(255,255,255,.08);
+    border-color: rgba(255,255,255,.18);
+    box-shadow: 0 24px 50px rgba(0,0,0,.25);
+}
+
+/* Floating hero pills */
+.floating-pill {
+    animation: floatY 5s ease-in-out infinite;
+}
+
+.floating-pill:nth-of-type(1) { animation-delay: 0s; }
+.floating-pill:nth-of-type(2) { animation-delay: .8s; }
+.floating-pill:nth-of-type(3) { animation-delay: 1.4s; }
+
+/* Reveal animation */
+.reveal-up {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity .8s ease, transform .8s ease;
+}
+
+.reveal-up.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Nice focus states */
+input:focus,
+textarea:focus {
+    box-shadow: 0 0 0 4px rgba(22, 163, 74, 0.10);
+}
+
+/* Product image hover polish */
+.product-card img {
+    transition: transform .7s ease;
+}
+
+.product-card:hover img {
+    transform: scale(1.08);
+}
+
+/* Slight hero copy motion smoothing */
+.hero-copy {
+    transition: transform .25s ease;
+}
+
+/* Keyframes */
+@keyframes floatY {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+}
+
+/* Reduced motion respect */
+@media (prefers-reduced-motion: reduce) {
+    .floating-pill,
+    .hero-premium .hero-image {
+        animation: none !important;
+        transition: none !important;
+    }
+
+    .interactive-card,
+    .product-card,
+    .interactive-dark-card,
+    .premium-btn,
+    .hero-copy,
+    .product-card img {
+        transition: none !important;
+    }
+}

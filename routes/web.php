@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\InquiryController;
+use App\Http\Controllers\ContactController;
 
 // admin controllers
 use App\Http\Controllers\Admin\AuthController;
@@ -20,9 +21,17 @@ Route::post('/inquiry', [InquiryController::class, 'store'])->name('inquiry.stor
 Route::get('/contact', function () {
     return view('contact');
 })->name('contact');
+Route::post('/contact-submit', [ContactController::class, 'submit'])->name('contact.submit');
 
 // admin routes
 Route::prefix('admin')->name('admin.')->group(function () {
+
+    // Redirect root admin URL to login page
+    Route::get('/', function () {
+        return auth()->check()
+            ? redirect()->route('admin.dashboard')
+            : redirect()->route('admin.login');
+    });
 
     // login (guest only)
     Route::middleware('guest')->group(function () {
