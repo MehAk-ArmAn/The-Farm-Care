@@ -9,15 +9,13 @@ class ProductController extends Controller
 {
     public function index()
     {
-        $categories = Category::where('is_active', true)->orderBy('name')->get();
-
         $products = Product::with('category')
             ->where('is_active', true)
             ->orderBy('sort_order')
             ->latest()
             ->paginate(12);
 
-        return view('products.index', compact('products', 'categories'));
+        return view('products.index', compact('products'));
     }
 
     public function show($slug)

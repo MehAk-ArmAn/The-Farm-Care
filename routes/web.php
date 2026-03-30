@@ -17,6 +17,9 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/products', [ProductController::class, 'index'])->name('products.index');
 Route::get('/products/{slug}', [ProductController::class, 'show'])->name('products.show');
 Route::post('/inquiry', [InquiryController::class, 'store'])->name('inquiry.store');
+Route::get('/contact', function () {
+    return view('contact');
+})->name('contact');
 
 // admin routes
 Route::prefix('admin')->name('admin.')->group(function () {
