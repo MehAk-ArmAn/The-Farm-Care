@@ -1,0 +1,1172 @@
+@import "tailwindcss";
+
+/* =========================================================
+   THE FARM CARE
+   SINGLE GLOBAL CSS FILE
+   COMBINED APP + HOME + GLOBAL PAGES
+   ========================================================= */
+
+
+/* =========================================================
+   ROOT TOKENS / DESIGN VARIABLES
+   ========================================================= */
+:root {
+    /* --- Core green palette --- */
+    --brand-green: #47b649;
+    --brand-green-2: #63cf55;
+    --brand-green-3: #8ae36f;
+    --brand-green-dark: #0d2d17;
+    --brand-green-deep: #061a0d;
+    --brand-green-soft: #e8f5e4;
+    --brand-green-soft-2: #eef7ec;
+
+    /* --- Surfaces --- */
+    --surface-light: #eef6ee;
+    --surface-light-2: #f3f8f1;
+    --surface-light-3: #ecf5e9;
+    --surface-card: rgba(255, 255, 255, 0.46);
+    --surface-card-strong: rgba(255, 255, 255, 0.56);
+
+    /* --- Text --- */
+    --text-strong: #ffffff;
+    --text-dark: #18211b;
+    --text-body: #5f675f;
+    --text-muted: #7d857d;
+
+    /* --- Borders --- */
+    --border-soft: rgba(99, 143, 92, 0.12);
+    --border-white-soft: rgba(255, 255, 255, 0.10);
+
+    /* --- Radius --- */
+    --radius-xl: 32px;
+    --radius-lg: 24px;
+    --radius-md: 18px;
+    --radius-sm: 12px;
+
+    /* --- Shadows --- */
+    --shadow-soft: 0 10px 30px rgba(13, 45, 23, 0.08);
+    --shadow-card: 0 18px 40px rgba(13, 45, 23, 0.08);
+    --shadow-strong: 0 20px 60px rgba(0, 0, 0, 0.20);
+}
+
+
+/* =========================================================
+   RESET / GLOBAL BASE
+   ========================================================= */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    color: var(--text-dark);
+    background-color: var(--surface-light);
+}
+
+/* --- Site body from layout --- */
+body.site-body {
+    min-height: 100vh;
+    background:
+        radial-gradient(circle at 15% 20%, rgba(71, 182, 73, 0.08), transparent 20%),
+        radial-gradient(circle at 85% 30%, rgba(71, 182, 73, 0.07), transparent 18%),
+        linear-gradient(180deg, #eef6ee 0%, #e8f2e8 100%);
+}
+
+/* --- Global wrapper from app layout --- */
+.site-shell {
+    position: relative;
+    overflow: hidden;
+    background: transparent;
+}
+
+/* --- Decorative eco arcs in background --- */
+.site-shell::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.16;
+    background-image:
+        radial-gradient(circle at -10% 60%, transparent 0 55%, rgba(71, 182, 73, 0.08) 56%, transparent 57%),
+        radial-gradient(circle at 110% 85%, transparent 0 48%, rgba(71, 182, 73, 0.06) 49%, transparent 50%);
+    z-index: 0;
+}
+
+/* --- Main content above bg decoration --- */
+.site-main,
+.navbar-glass,
+footer {
+    position: relative;
+    z-index: 2;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+a {
+    text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0;
+    letter-spacing: -0.03em;
+    color: inherit; /* ✅ let Tailwind control it */
+}
+
+p {
+    margin: 0;
+    color: var(--text-body);
+    line-height: 1.75;
+}
+
+
+/* =========================================================
+   GLOBAL HELPERS
+   ========================================================= */
+.text-strong {
+    color: var(--text-strong);
+}
+
+.text-body {
+    color: var(--text-body);
+}
+
+.text-muted {
+    color: var(--text-muted);
+}
+
+.container-custom {
+    max-width: 1280px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.section-padding {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+}
+
+
+/* =========================================================
+   BUTTON SYSTEM
+   ========================================================= */
+.premium-btn,
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    cursor: pointer;
+    transition: all 0.28s ease;
+    text-decoration: none;
+    box-shadow: 0 10px 22px rgba(13, 45, 23, 0.10);
+}
+
+.premium-btn-primary,
+.premium-btn-green {
+    background: linear-gradient(180deg, #63cf55 0%, #40ad3f 100%);
+    color: #ffffff !important;
+}
+
+.premium-btn-secondary,
+.premium-btn-light {
+    background: rgba(255, 255, 255, 0.72);
+    color: var(--text-dark) !important;
+    border: 1px solid var(--border-soft);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
+.premium-btn:hover,
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 28px rgba(13, 45, 23, 0.16);
+}
+
+.magnetic-btn {
+    will-change: transform;
+}
+
+
+/* =========================================================
+   NAVBAR
+   ========================================================= */
+.navbar-glass {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    width: 100%;
+    border-bottom: 1px solid var(--border-white-soft);
+    background:
+        linear-gradient(180deg, rgba(6, 26, 13, 0.86), rgba(9, 34, 16, 0.74));
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    box-shadow: 0 14px 40px rgba(0, 0, 0, 0.16);
+}
+
+.navbar-glass * {
+    position: relative;
+    z-index: 2;
+}
+
+.navbar-glass .mx-auto {
+    min-height: 82px;
+}
+
+.navbar-glass .group.flex.items-center.gap-3 > div:first-child {
+    background: rgba(255, 255, 255, 0.08) !important;
+    border: 1px solid rgba(255, 255, 255, 0.10) !important;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
+}
+
+.navbar-glass .text-\[\#111827\] {
+    color: #ffffff !important;
+}
+
+.navbar-glass .text-\[\#2F6B3B\] {
+    color: #8ae36f !important;
+}
+
+.navbar-glass .text-\[\#4B5563\] {
+    color: rgba(255, 255, 255, 0.82) !important;
+}
+
+.navbar-glass .hover\:text-\[\#2F6B3B\]:hover,
+.navbar-glass .text-\[\#2F6B3B\] {
+    color: #8ae36f !important;
+}
+
+.navbar-glass .md\:flex {
+    gap: 2rem !important;
+}
+
+.navbar-glass .premium-btn-primary {
+    background: linear-gradient(180deg, #63cf55 0%, #40ad3f 100%) !important;
+    color: #ffffff !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    box-shadow: 0 12px 26px rgba(71, 182, 73, 0.24);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+.navbar-glass .premium-btn-primary:hover {
+    transform: translateY(-1px);
+    filter: brightness(1.03);
+    box-shadow: 0 16px 30px rgba(71, 182, 73, 0.30);
+}
+
+.navbar-glass .md\:hidden a {
+    background: rgba(255, 255, 255, 0.08) !important;
+    color: #8ae36f !important;
+    border: 1px solid rgba(255, 255, 255, 0.12) !important;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.navbar-glass .md\:hidden a:hover {
+    background: rgba(71, 182, 73, 0.16) !important;
+    color: #ffffff !important;
+}
+
+.navbar-glass .bg-white {
+    background: rgba(255, 255, 255, 0.06) !important;
+}
+
+.navbar-glass .border-\[\#D9E5DB\] {
+    border-color: rgba(255, 255, 255, 0.10) !important;
+}
+
+
+/* =========================================================
+   HERO SECTION
+   ========================================================= */
+.hero-premium {
+    position: relative;
+    min-height: 88vh !important;
+    background:
+        radial-gradient(circle at 70% 35%, rgba(74, 190, 79, 0.30), transparent 18%),
+        radial-gradient(circle at 20% 85%, rgba(29, 115, 42, 0.20), transparent 18%),
+        linear-gradient(180deg, rgba(4, 18, 10, 0.92), rgba(4, 15, 9, 0.94));
+}
+
+.hero-premium .hero-image {
+    filter: brightness(1.33) contrast(1.08) saturate(1.05);
+}
+
+.hero-premium .bg-white\/40 {
+    background: rgba(0, 0, 0, 0.34) !important;
+}
+
+.hero-premium .from-white\/85 {
+    --tw-gradient-from: rgba(4, 12, 7, 0.85) !important;
+    --tw-gradient-to: rgba(4, 12, 7, 0) !important;
+    --tw-gradient-stops: var(--tw-gradient-from), rgba(4, 12, 7, 0.58), var(--tw-gradient-to) !important;
+}
+
+.hero-premium .to-white\/10 {
+    --tw-gradient-to: rgba(11, 26, 14, 0.12) !important;
+}
+
+.hero-premium .from-\[\#F7FAF7\]\/70 {
+    --tw-gradient-from: rgba(2, 8, 4, 0.28) !important;
+    --tw-gradient-to: rgba(2, 8, 4, 0) !important;
+    --tw-gradient-stops: var(--tw-gradient-from), transparent, var(--tw-gradient-to) !important;
+}
+
+.hero-premium .hero-copy {
+    max-width: 640px;
+}
+
+.hero-premium .inline-flex.rounded-full {
+    background: transparent !important;
+    border-color: rgba(113, 221, 99, 0.18) !important;
+    color: #79da67 !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+}
+
+.hero-premium h1 {
+    color: #ffffff !important;
+    font-weight: 800 !important;
+    font-size: clamp(3rem, 5vw, 5.2rem) !important;
+    line-height: 1.02 !important;
+    max-width: 620px;
+}
+
+.hero-premium h1 .text-\[var\(--brand-green\)\] {
+    color: #7cdf60 !important;
+}
+
+.hero-premium p {
+    color: rgba(255, 255, 255, 0.72) !important;
+    max-width: 560px;
+    font-size: 1rem;
+}
+
+.hero-premium .rounded-full.border {
+    background: rgba(255, 255, 255, 0.04) !important;
+    border-color: rgba(255, 255, 255, 0.10) !important;
+    color: rgba(255, 255, 255, 0.86) !important;
+    backdrop-filter: blur(8px);
+    box-shadow: none !important;
+}
+
+.hero-premium .floating-pill {
+    background: rgba(255, 255, 255, 0.06) !important;
+    color: rgba(255, 255, 255, 0.86) !important;
+    border-color: rgba(255, 255, 255, 0.10) !important;
+    box-shadow: var(--shadow-soft);
+}
+
+.slider-arrow {
+    width: 58px;
+    height: 58px;
+    padding: 0 !important;
+    border-radius: 999px !important;
+    border: 1px solid rgb(255, 255, 255) !important;
+    background: #7cdf60 !important;
+    color: #ffffff !important;
+    backdrop-filter: blur(10px);
+}
+
+.slider-arrow:hover {
+    background: rgba(71, 182, 73, 0.18) !important;
+    border-color: rgba(126, 228, 106, 0.30) !important;
+    transform: translateY(-50%) scale(1.03);
+}
+
+.hero-premium .bottom-6 button {
+    border-color: rgba(255, 255, 255, 0.24) !important;
+}
+
+.hero-premium .bottom-0.left-0 {
+    background: rgba(255, 255, 255, 0.06) !important;
+}
+
+
+/* =========================================================
+   GLOBAL SECTION BACKGROUNDS
+   ========================================================= */
+section.bg-white {
+    background: linear-gradient(180deg, #f3f8f1 0%, #eef6ec 100%) !important;
+}
+
+section.bg-white.py-20.text-center {
+    background: linear-gradient(180deg, #f2f8f1 0%, #edf5eb 100%) !important;
+}
+
+section#about {
+    background: linear-gradient(180deg, #f3f8f2 0%, #edf4ea 100%) !important;
+    position: relative;
+}
+
+section#about::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.20;
+    background-image:
+        linear-gradient(120deg, transparent 0 48%, rgba(71, 182, 73, 0.04) 49%, transparent 50%),
+        linear-gradient(60deg, transparent 0 50%, rgba(71, 182, 73, 0.04) 51%, transparent 52%);
+    background-size: 220px 220px;
+}
+
+section#products {
+    background: linear-gradient(180deg, #f2f8f1 0%, #ebf4e8 100%) !important;
+}
+
+section.bg-\[var\(--brand-light\)\].py-20 {
+    background: linear-gradient(180deg, #e9f1e6 0%, #e5ede2 100%) !important;
+}
+
+
+/* =========================================================
+   LIGHT GLASS CARDS
+   ========================================================= */
+.interactive-card {
+    transition: all 0.30s ease;
+}
+
+.interactive-card.rounded-3xl,
+.interactive-card.rounded-\[2rem\],
+.product-card,
+section.bg-\[var\(--brand-light\)\].py-20 .interactive-card {
+    background: rgba(255, 255, 255, 0.46) !important;
+    border: 1px solid rgba(99, 143, 92, 0.12) !important;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    box-shadow: 0 14px 34px rgba(26, 61, 31, 0.08) !important;
+}
+
+.interactive-card:hover,
+.product-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 18px 42px rgba(26, 61, 31, 0.12) !important;
+}
+
+.interactive-card h3,
+.product-card h3 {
+    color: #1d261f !important;
+    font-weight: 700;
+}
+
+.interactive-card p,
+.product-card p {
+    color: #6d746d !important;
+}
+
+section#about .bg-slate-50 {
+    background: rgba(255, 255, 255, 0.52) !important;
+    border: 1px solid rgba(99, 143, 92, 0.12) !important;
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+}
+
+
+/* =========================================================
+   ABOUT MEDIA
+   ========================================================= */
+section#about h2 {
+    font-size: clamp(2.2rem, 3.5vw, 3.7rem);
+    font-weight: 800;
+    line-height: 1.14;
+}
+
+section#about .interactive-card {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+}
+
+section#about img {
+    border-radius: 18px !important;
+    min-height: 520px;
+    object-fit: cover;
+    box-shadow: 0 25px 50px rgba(13, 45, 23, 0.10);
+}
+
+
+/* =========================================================
+   CATEGORY BLOCKS
+   ========================================================= */
+section.bg-\[var\(--brand-light\)\].py-20 .interactive-card {
+    border-radius: 12px !important;
+}
+
+section.bg-\[var\(--brand-light\)\].py-20 .inline-flex.rounded-full {
+    border-radius: 999px !important;
+    background: rgba(71, 182, 73, 0.09) !important;
+    color: #3ea73c !important;
+}
+
+
+/* =========================================================
+   PRODUCT CARDS
+   ========================================================= */
+.product-card {
+    border-radius: 14px !important;
+    box-shadow: none !important;
+    transition: all 0.28s ease;
+}
+
+.product-card .overflow-hidden {
+    border-radius: 10px !important;
+    background: rgba(255, 255, 255, 0.75) !important;
+}
+
+.product-card img {
+    height: 240px !important;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.product-card h3 {
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: #1d261f !important;
+}
+
+.product-card p {
+    color: #6b736b !important;
+    font-size: 0.95rem;
+}
+
+.product-card a {
+    color: #43ad40 !important;
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   DARK FEATURE SECTION
+   ========================================================= */
+section.bg-slate-950.py-20.text-strong {
+    position: relative;
+    background:
+        radial-gradient(circle at 20% 30%, rgba(71, 182, 73, 0.12), transparent 20%),
+        radial-gradient(circle at 80% 70%, rgba(71, 182, 73, 0.10), transparent 20%),
+        linear-gradient(180deg, #08180d 0%, #06130a 100%) !important;
+}
+
+section.bg-slate-950.py-20.text-strong h2,
+section.bg-slate-950.py-20.text-strong h3,
+section.bg-slate-950.py-20.text-strong p {
+    color: #ffffff !important;
+}
+
+section.bg-slate-950.py-20.text-strong .text-strong\/70 {
+    color: rgba(255, 255, 255, 0.68) !important;
+}
+
+.interactive-dark-card {
+    background: rgba(255, 255, 255, 0.03) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    box-shadow: none !important;
+    transition: all 0.28s ease;
+}
+
+.interactive-dark-card:hover {
+    transform: translateY(-6px);
+    background: rgba(71, 182, 73, 0.08) !important;
+    border-color: rgba(126, 228, 106, 0.22) !important;
+}
+
+
+/* =========================================================
+   NEWSLETTER / CTA
+   ========================================================= */
+section.bg-white.py-20 .reveal-up form.mt-8 {
+    gap: 14px !important;
+}
+
+section.bg-white.py-20 input[type="email"] {
+    min-height: 56px;
+    background: rgba(255, 255, 255, 0.72);
+    border: 1px solid #d9dfd2 !important;
+    box-shadow: none !important;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
+section.bg-white.py-20 input[type="email"]:focus {
+    border-color: #4ab84c !important;
+    box-shadow: 0 0 0 5px rgba(71, 182, 73, 0.10) !important;
+}
+
+section.bg-white.py-20 .interactive-card.overflow-hidden {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+}
+
+section.bg-white.py-20 .interactive-card.overflow-hidden img {
+    min-height: 420px;
+    border-radius: 22px !important;
+    object-fit: cover;
+}
+
+
+/* =========================================================
+   CONTACT SECTION
+   ========================================================= */
+section#contact {
+    background:
+        radial-gradient(circle at 15% 25%, rgba(71, 182, 73, 0.10), transparent 20%),
+        radial-gradient(circle at 85% 75%, rgba(71, 182, 73, 0.08), transparent 18%),
+        linear-gradient(180deg, #07150b 0%, #051008 100%) !important;
+}
+
+section#contact h2,
+section#contact p,
+section#contact .text-strong {
+    color: #ffffff !important;
+}
+
+section#contact .text-slate-500 {
+    color: rgba(255, 255, 255, 0.45) !important;
+}
+
+section#contact .bg-white\/5 {
+    background: rgba(255, 255, 255, 0.04) !important;
+}
+
+section#contact .border-white\/10 {
+    border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+section#contact input,
+section#contact textarea {
+    background: rgba(255, 255, 255, 0.03) !important;
+    color: #ffffff !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    box-shadow: none !important;
+}
+
+section#contact input::placeholder,
+section#contact textarea::placeholder {
+    color: rgba(255, 255, 255, 0.42);
+}
+
+section#contact input:focus,
+section#contact textarea:focus {
+    border-color: rgba(126, 228, 106, 0.40) !important;
+    box-shadow: 0 0 0 4px rgba(71, 182, 73, 0.08) !important;
+}
+
+section#contact button {
+    background: linear-gradient(180deg, #58c94c 0%, #3aa839 100%) !important;
+    color: #ffffff !important;
+    border: none !important;
+}
+
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+footer {
+    margin-top: 0 !important;
+    border-top: none !important;
+    background:
+        linear-gradient(180deg, rgba(18, 86, 30, 0.96) 0%, rgba(11, 63, 21, 0.98) 100%) !important;
+    color: #ffffff !important;
+    position: relative;
+    overflow: hidden;
+}
+
+footer::before {
+    content: "";
+    position: absolute;
+    top: -80px;
+    right: -80px;
+    width: 260px;
+    height: 260px;
+    border-radius: 999px;
+    background: rgba(99, 211, 86, 0.14);
+    filter: blur(80px);
+    pointer-events: none;
+}
+
+footer::after {
+    content: "";
+    position: absolute;
+    bottom: -100px;
+    left: -60px;
+    width: 240px;
+    height: 240px;
+    border-radius: 999px;
+    background: rgba(71, 182, 73, 0.12);
+    filter: blur(90px);
+    pointer-events: none;
+}
+
+footer > * {
+    position: relative;
+    z-index: 2;
+}
+
+footer p,
+footer a,
+footer li,
+footer h4 {
+    color: #ffffff !important;
+}
+
+footer p,
+footer li,
+footer a {
+    color: rgba(255, 255, 255, 0.82) !important;
+}
+
+footer h4 {
+    font-weight: 800 !important;
+    letter-spacing: 0.18em !important;
+    font-size: 0.72rem !important;
+    color: #9cf07f !important;
+}
+
+footer .text-\[\#111827\] {
+    color: #ffffff !important;
+}
+
+footer .bg-white {
+    background: rgba(255, 255, 255, 0.10) !important;
+    border-color: rgba(255, 255, 255, 0.12) !important;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
+footer .rounded-xl.bg-white\/5 {
+    background: rgba(255, 255, 255, 0.10) !important;
+    border-color: rgba(255, 255, 255, 0.14) !important;
+    box-shadow: none !important;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
+footer .rounded-xl.bg-white\/5:hover {
+    transform: translateY(-2px);
+    background: rgba(255, 255, 255, 0.16) !important;
+}
+
+footer .border-t.border-\[\#D9E5DB\] {
+    border-color: rgba(255, 255, 255, 0.14) !important;
+}
+
+footer .text-\[\#6B7280\] {
+    color: rgba(255, 255, 255, 0.66) !important;
+}
+
+footer a:hover {
+    color: #a5f48a !important;
+}
+
+
+/* =========================================================
+   FORM STYLING FOR OTHER PAGES
+   makes contact/inquiry/admin pages also look on-brand
+   ========================================================= */
+form input,
+form textarea,
+form select {
+    transition: all 0.22s ease;
+}
+
+form input:focus,
+form textarea:focus,
+form select:focus {
+    outline: none;
+}
+
+/* --- Light form cards on normal pages --- */
+.max-w-3xl.mx-auto.p-6.bg-white.rounded-xl.shadow-md,
+.bg-white.rounded-xl.shadow-md,
+.bg-white.p-8.rounded-\[2\.5rem\],
+.bg-white\/5.border.border-white\/10.p-8.rounded-\[2\.5rem\] {
+    box-shadow: var(--shadow-soft);
+}
+
+/* --- Generic light cards for contact/inquiry pages --- */
+.bg-white.rounded-xl,
+.bg-white.rounded-2xl,
+.bg-white.rounded-3xl {
+    background: rgba(255, 255, 255, 0.58);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+}
+
+/* =========================================================
+   PRODUCT PAGE / BUSINESS INQUIRY BOX
+   MATCH REST OF GREEN GLASS THEME
+   ========================================================= */
+
+/* --- Main inquiry card wrapper on product pages --- */
+/* use this for the right-side business inquiry box */
+.product-inquiry-card,
+.business-inquiry-box,
+.inquiry-box,
+.product-detail-inquiry {
+    position: relative;
+    overflow: hidden;
+    border-radius: 28px;
+    border: 1px solid rgba(99, 143, 92, 0.14);
+    background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.58) 0%, rgba(244, 251, 242, 0.48) 100%);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    box-shadow: 0 18px 42px rgba(26, 61, 31, 0.10);
+    padding: 1.5rem;
+}
+
+/* --- soft green glow inside the inquiry card --- */
+.product-inquiry-card::before,
+.business-inquiry-box::before,
+.inquiry-box::before,
+.product-detail-inquiry::before {
+    content: "";
+    position: absolute;
+    top: -50px;
+    right: -50px;
+    width: 170px;
+    height: 170px;
+    border-radius: 999px;
+    background: rgba(71, 182, 73, 0.12);
+    filter: blur(50px);
+    pointer-events: none;
+}
+
+/* --- keep content above glow --- */
+.product-inquiry-card > *,
+.business-inquiry-box > *,
+.inquiry-box > *,
+.product-detail-inquiry > * {
+    position: relative;
+    z-index: 1;
+}
+
+/* --- Inquiry heading --- */
+.product-inquiry-card h2,
+.product-inquiry-card h3,
+.product-inquiry-card h4,
+.business-inquiry-box h2,
+.business-inquiry-box h3,
+.business-inquiry-box h4,
+.inquiry-box h2,
+.inquiry-box h3,
+.inquiry-box h4,
+.product-detail-inquiry h2,
+.product-detail-inquiry h3,
+.product-detail-inquiry h4 {
+    color: #18211b;
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: -0.03em;
+}
+
+/* --- small helper text --- */
+.product-inquiry-card p,
+.business-inquiry-box p,
+.inquiry-box p,
+.product-detail-inquiry p {
+    color: #647064;
+}
+
+/* --- labels --- */
+.product-inquiry-card label,
+.business-inquiry-box label,
+.inquiry-box label,
+.product-detail-inquiry label {
+    display: block;
+    margin-bottom: 0.45rem;
+    color: #1e2a20;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+}
+
+/* --- input / textarea / select style --- */
+.product-inquiry-card input,
+.product-inquiry-card textarea,
+.product-inquiry-card select,
+.business-inquiry-box input,
+.business-inquiry-box textarea,
+.business-inquiry-box select,
+.inquiry-box input,
+.inquiry-box textarea,
+.inquiry-box select,
+.product-detail-inquiry input,
+.product-detail-inquiry textarea,
+.product-detail-inquiry select {
+    width: 100%;
+    border-radius: 18px;
+    border: 1px solid rgba(99, 143, 92, 0.16) !important;
+    background: rgba(255, 255, 255, 0.72) !important;
+    color: #18211b !important;
+    padding: 0.95rem 1rem;
+    outline: none;
+    box-shadow: none !important;
+    transition: all 0.22s ease;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+/* --- placeholders --- */
+.product-inquiry-card input::placeholder,
+.product-inquiry-card textarea::placeholder,
+.business-inquiry-box input::placeholder,
+.business-inquiry-box textarea::placeholder,
+.inquiry-box input::placeholder,
+.inquiry-box textarea::placeholder,
+.product-detail-inquiry input::placeholder,
+.product-detail-inquiry textarea::placeholder {
+    color: #7a857a;
+}
+
+/* --- field focus --- */
+.product-inquiry-card input:focus,
+.product-inquiry-card textarea:focus,
+.product-inquiry-card select:focus,
+.business-inquiry-box input:focus,
+.business-inquiry-box textarea:focus,
+.business-inquiry-box select:focus,
+.inquiry-box input:focus,
+.inquiry-box textarea:focus,
+.inquiry-box select:focus,
+.product-detail-inquiry input:focus,
+.product-detail-inquiry textarea:focus,
+.product-detail-inquiry select:focus {
+    border-color: rgba(71, 182, 73, 0.42) !important;
+    background: rgba(255, 255, 255, 0.84) !important;
+    box-shadow: 0 0 0 5px rgba(71, 182, 73, 0.10) !important;
+}
+
+/* --- textarea sizing --- */
+.product-inquiry-card textarea,
+.business-inquiry-box textarea,
+.inquiry-box textarea,
+.product-detail-inquiry textarea {
+    min-height: 140px;
+    resize: vertical;
+}
+
+/* --- submit button inside inquiry card --- */
+.product-inquiry-card button,
+.product-inquiry-card .btn-submit,
+.product-inquiry-card .inquiry-submit,
+.business-inquiry-box button,
+.business-inquiry-box .btn-submit,
+.business-inquiry-box .inquiry-submit,
+.inquiry-box button,
+.inquiry-box .btn-submit,
+.inquiry-box .inquiry-submit,
+.product-detail-inquiry button,
+.product-detail-inquiry .btn-submit,
+.product-detail-inquiry .inquiry-submit {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 54px;
+    border: none !important;
+    border-radius: 18px;
+    background: linear-gradient(180deg, #63cf55 0%, #40ad3f 100%) !important;
+    color: #ffffff !important;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    box-shadow: 0 14px 28px rgba(71, 182, 73, 0.20);
+    transition: all 0.24s ease;
+}
+
+/* --- submit button hover --- */
+.product-inquiry-card button:hover,
+.product-inquiry-card .btn-submit:hover,
+.product-inquiry-card .inquiry-submit:hover,
+.business-inquiry-box button:hover,
+.business-inquiry-box .btn-submit:hover,
+.business-inquiry-box .inquiry-submit:hover,
+.inquiry-box button:hover,
+.inquiry-box .btn-submit:hover,
+.inquiry-box .inquiry-submit:hover,
+.product-detail-inquiry button:hover,
+.product-detail-inquiry .btn-submit:hover,
+.product-detail-inquiry .inquiry-submit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 18px 34px rgba(71, 182, 73, 0.28);
+    filter: brightness(1.02);
+}
+
+/* --- contact info rows inside inquiry box if you have them --- */
+.product-inquiry-card .info-row,
+.business-inquiry-box .info-row,
+.inquiry-box .info-row,
+.product-detail-inquiry .info-row {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    border-radius: 18px;
+    border: 1px solid rgba(99, 143, 92, 0.10);
+    background: rgba(255, 255, 255, 0.40);
+    padding: 0.9rem 1rem;
+}
+
+/* --- little icon bubble if exists --- */
+.product-inquiry-card .info-icon,
+.business-inquiry-box .info-icon,
+.inquiry-box .info-icon,
+.product-detail-inquiry .info-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    border-radius: 14px;
+    background: rgba(71, 182, 73, 0.12);
+    color: var(--brand-green);
+}
+
+/* =========================================================
+   ANIMATIONS
+   ========================================================= */
+.reveal-up {
+    animation: revealUp 0.7s ease both;
+}
+
+@keyframes revealUp {
+    from {
+        opacity: 0;
+        transform: translateY(24px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.floating-pill {
+    animation: floatSoft 5.5s ease-in-out infinite;
+}
+
+@keyframes floatSoft {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 768px) {
+    .product-inquiry-card,
+    .business-inquiry-box,
+    .inquiry-box,
+    .product-detail-inquiry {
+        border-radius: 22px;
+        padding: 1rem;
+    }
+
+    .product-inquiry-card button,
+    .business-inquiry-box button,
+    .inquiry-box button,
+    .product-detail-inquiry button {
+        min-height: 50px;
+    }
+}
+
+@media (max-width: 1280px) {
+    .hero-premium h1 {
+        font-size: clamp(2.7rem, 5vw, 4.6rem) !important;
+    }
+}
+
+@media (max-width: 1024px) {
+    .hero-premium {
+        min-height: 78vh !important;
+    }
+
+    .hero-premium .hero-copy {
+        max-width: 100%;
+    }
+
+    section#about img,
+    section.bg-white.py-20 .interactive-card.overflow-hidden img {
+        min-height: 360px;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar-glass .mx-auto {
+        min-height: 74px;
+    }
+
+    .navbar-glass .sm\:block {
+        display: none !important;
+    }
+
+    .hero-premium {
+        min-height: 72vh !important;
+    }
+
+    .hero-premium h1 {
+        font-size: 2.4rem !important;
+        line-height: 1.08 !important;
+    }
+
+    .slider-arrow {
+        width: 46px;
+        height: 46px;
+        font-size: 1.2rem !important;
+    }
+
+    section#about img,
+    section.bg-white.py-20 .interactive-card.overflow-hidden img {
+        min-height: 280px;
+    }
+
+    footer .grid {
+        gap: 2rem !important;
+    }
+}
+
+@media (max-width: 640px) {
+    .hero-premium .floating-pill {
+        display: none !important;
+    }
+
+    .hero-premium h1 {
+        font-size: 2rem !important;
+    }
+
+    .hero-premium p {
+        font-size: 0.95rem;
+    }
+
+    .premium-btn {
+        width: 100%;
+    }
+}
