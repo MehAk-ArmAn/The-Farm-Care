@@ -26,4 +26,14 @@ class ProductController extends Controller
 
         return view('products.show', compact('product'));
     }
+
+    public function byCategory($id)
+    {
+        $products = Product::where('category_id', $id)
+            ->where('is_active', true)
+            ->latest()
+            ->paginate(12);
+
+        return view('products.index', compact('products'));
+    }
 }

@@ -143,10 +143,10 @@
         </div>
     </div>
 
-    {{-- Left Arrow --}}
+    <!-- {{-- Left Arrow --}}
     <button
         @click="prev()"
-        class="slider-arrow absolute left-4 top-1/2 z-30 -translate-y-1/2 rounded-full border border-[#D9E5DB] bg-white/90 px-4 py-3 text-2xl font-bold text-[#1F2937] shadow-md backdrop-blur-md transition"
+        class="slider-arrow absolute left-4 top-1/2 z-30 -translate-y-1/2 rounded-full border border-[#2F6B3B] bg-[#2F6B3B]/90 px-4 py-3 text-2xl font-bold text-white shadow-md backdrop-blur-md transition hover:bg-[#245530]"
         aria-label="Previous Slide"
     >
         &#10094;
@@ -155,11 +155,11 @@
     {{-- Right Arrow --}}
     <button
         @click="next()"
-        class="slider-arrow absolute right-4 top-1/2 z-30 -translate-y-1/2 rounded-full border border-[#D9E5DB] bg-white/90 px-4 py-3 text-2xl font-bold text-[#1F2937] shadow-md backdrop-blur-md transition"
+        class="slider-arrow absolute right-4 top-1/2 z-30 -translate-y-1/2 rounded-full border border-[#2F6B3B] bg-[#2F6B3B]/90 px-4 py-3 text-2xl font-bold text-white shadow-md backdrop-blur-md transition hover:bg-[#245530]"
         aria-label="Next Slide"
     >
         &#10095;
-    </button>
+    </button> -->
 
     {{-- Dots --}}
     <div class="absolute bottom-6 left-1/2 z-30 flex -translate-x-1/2 gap-3">

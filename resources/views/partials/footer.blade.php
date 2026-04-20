@@ -54,10 +54,10 @@
             <div>
                 <h4 class="text-xs font-black uppercase tracking-[0.3em] text-[#2F6B3B]">Categories</h4>
                 <ul class="mt-6 space-y-4 text-sm font-semibold text-[#4B5563]">
-                    <li><a href="#" class="transition hover:text-[#2F6B3B]">Dental Instruments</a></li>
-                    <li><a href="#" class="transition hover:text-[#2F6B3B]">Veterinary Tools</a></li>
-                    <li><a href="#" class="transition hover:text-[#2F6B3B]">Hunting Knives</a></li>
-                    <li><a href="#" class="transition hover:text-[#2F6B3B]">Animal Nutrition</a></li>
+                    <li><a href="{{ route('products.byCategory', 1) }}">Dental Instruments</a></li> <!-- id = 1 -->
+                    <li><a href="{{ route('products.byCategory', 2) }}">Veterinary  Instruments</a></li>
+                    <li><a href="{{ route('products.byCategory', 3) }}">Hunting Knives</a></li>
+                    <!-- <li><a href="{{ route('products.byCategory', 4) }}">Animal Nutrition</a></li> -->
                 </ul>
             </div>
 
@@ -95,8 +95,8 @@
             <p>&copy; {{ date('Y') }} THE FARM CARE. ALL RIGHTS RESERVED.</p>
 
             <div class="flex gap-6">
-                <a href="#" class="transition hover:text-[#2F6B3B]">Privacy Policy</a>
-                <a href="#" class="transition hover:text-[#2F6B3B]">Terms of Service</a>
+                <a href="/privacy-policy" class="transition hover:text-[#2F6B3B]">Privacy Policy</a>
+                <a href="/terms" class="transition hover:text-[#2F6B3B]">Terms of Service</a>
             </div>
         </div>
     </div>

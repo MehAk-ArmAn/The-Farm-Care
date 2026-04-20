@@ -31,11 +31,12 @@ Route::post('/newsletter-subscribe', [NewsletterController::class, 'store'])
 
 /*
 |--------------------------------------------------------------------------
-| Product Routes
+| Product & Category Routes
 |--------------------------------------------------------------------------
 */
 Route::get('/products', [ProductController::class, 'index'])->name('products.index');
 Route::get('/products/{slug}', [ProductController::class, 'show'])->name('products.show');
+Route::get('/products/category/{id}', [ProductController::class, 'byCategory'])->name('products.byCategory'); // filter route
 
 /*
 |--------------------------------------------------------------------------
@@ -58,6 +59,14 @@ Route::get('/inquiry', function () {
 */
 Route::get('/contact', [ContactController::class, 'showForm'])->name('contact.form');
 Route::post('/contact', [ContactController::class, 'submitForm'])->name('contact.submit');
+
+/*
+|--------------------------------------------------------------------------
+| Privacy Policy & Terms of Service
+|--------------------------------------------------------------------------
+*/
+Route::view('/privacy-policy', 'privacy-policy');
+Route::view('/terms', 'terms');
 
 /*
 |--------------------------------------------------------------------------
