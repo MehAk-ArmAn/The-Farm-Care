@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 19, 2026 at 05:33 PM
+-- Generation Time: Apr 20, 2026 at 03:25 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -68,7 +68,7 @@ CREATE TABLE `categories` (
 INSERT INTO `categories` (`id`, `name`, `slug`, `description`, `is_active`, `created_at`, `updated_at`) VALUES
 (1, 'Dental Instruments', 'dental-instruments', NULL, 1, '2026-04-09 14:37:03', '2026-04-09 14:37:03'),
 (2, 'Veterinary Instruments', 'veterinary-instruments', NULL, 1, '2026-04-09 14:37:15', '2026-04-09 14:37:15'),
-(3, 'Hunting Knife', 'hunting-knife', NULL, 1, '2026-04-09 14:37:26', '2026-04-09 14:37:26');
+(3, 'Hunting Knives', 'hunting-knives', NULL, 1, '2026-04-09 14:37:26', '2026-04-09 14:37:26');
 
 -- --------------------------------------------------------
 
@@ -231,7 +231,8 @@ CREATE TABLE `newsletter_subscribers` (
 --
 
 INSERT INTO `newsletter_subscribers` (`id`, `email`, `is_active`, `subscribed_at`, `created_at`, `updated_at`) VALUES
-(1, 'mehakarmaan1@gmail.com', 1, '2026-04-10 07:15:00', '2026-04-10 07:15:00', '2026-04-10 07:15:00');
+(1, 'mehakarmaan1@gmail.com', 1, '2026-04-10 07:15:00', '2026-04-10 07:15:00', '2026-04-10 07:15:00'),
+(2, 'i@armansabir.com', 1, '2026-04-19 15:31:21', '2026-04-19 15:31:21', '2026-04-19 15:31:21');
 
 -- --------------------------------------------------------
 
@@ -365,9 +366,7 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('6cN2bzU0UbmfVaeJDpIkRXxJBtwOfDoFQfcqXaI2', 4, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoidU9mVVJ2T0o1c2ZOYWFkbGdtWWNYNFR4OUt5RVREejNQaTJ4Y3VzOSI7czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6NDtzOjk6Il9wcmV2aW91cyI7YToyOntzOjM6InVybCI7czo1MDoiaHR0cDovLzEyNy4wLjAuMTo4MDAwL2FkbWluL25ld3NsZXR0ZXItc3Vic2NyaWJlcnMiO3M6NToicm91dGUiO3M6MjI6ImFkbWluLm5ld3NsZXR0ZXIuaW5kZXgiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX1zOjEyOiJpbnF1aXJ5X2NhcnQiO2E6MDp7fX0=', 1775819714),
-('NpELwlJ0a79mrbG5FvuCPtTYTZJdMMwI4kVyvQuT', 4, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiTzJWa3NJZDA0ZzRscjdabW5wN0x2cUNDSVI0NlBBYzc2TnV5UXkwbyI7czo5OiJfcHJldmlvdXMiO2E6Mjp7czozOiJ1cmwiO3M6Mzc6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9hZG1pbi9kYXNoYm9hcmQiO3M6NToicm91dGUiO3M6MTU6ImFkbWluLmRhc2hib2FyZCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6NTA6ImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjQ7fQ==', 1775819945),
-('tMCk9yjjpwAFMIk1VXrT2yhojW7n7nkV5VhlTIOG', 4, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiYTFtTTdHMER0dHYxbEZBWXRETlJIamhENWlnSVpOWUdWemVYWUVRYiI7czo5OiJfcHJldmlvdXMiO2E6Mjp7czozOiJ1cmwiO3M6MjE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMCI7czo1OiJyb3V0ZSI7czo0OiJob21lIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1775820040);
+('9Coedq0tH2QO0F0Ds5VSDvRTMLjEeWFZn9FYg1i0', 4, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoidk5TcW1WelRncDMyN3lOcXhxa3BFWUV6NENmMWZoaE5DOEVWWjhHUSI7czo5OiJfcHJldmlvdXMiO2E6Mjp7czozOiJ1cmwiO3M6MjE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMCI7czo1OiJyb3V0ZSI7czo0OiJob21lIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6NDt9', 1776691402);
 
 -- --------------------------------------------------------
 
@@ -412,7 +411,7 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `is_admin`, `remember_token`, `created_at`, `updated_at`, `role`) VALUES
 (1, 'admin', 'admin@farmcare.com', NULL, '$2y$12$UtcoVzYrTxwtX9t2pjzUb.iGlEcqrS4tYakTQ06AnHYPUhcOd5hOW', 1, 'fijivq8z2gFFLO9Kr1cLotEnZzMFVkHYIsSqbKEwSoHlpVDm6l1KxrGHL9O5', '2026-03-29 08:52:49', '2026-04-05 04:26:35', 'user'),
-(4, 'Admin', 'admin@thefarmcare.com', NULL, '$2y$12$s/vn7wIbbldaFYT5tGcV2.nXFC575ywIqUYewtvoXFsRwgE2jU2.6', 1, 'Y8LnuXIdMUEiTBkUpJ2EDDLvo5JzjWFYvTcJEAhEjhLg4dUtWXV2N8qcKs68', '2026-04-05 07:55:42', '2026-04-05 07:55:42', 'user');
+(4, 'Admin', 'admin@thefarmcare.com', NULL, '$2y$12$s/vn7wIbbldaFYT5tGcV2.nXFC575ywIqUYewtvoXFsRwgE2jU2.6', 1, 'eKZJ2UFWWJCiqMX1zuvGEft9UmTCqSM6uSClcuGT7KBxGt5t5SDTePLN6n7x', '2026-04-05 07:55:42', '2026-04-05 07:55:42', 'user');
 
 --
 -- Indexes for dumped tables
@@ -577,7 +576,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `newsletter_subscribers`
 --
 ALTER TABLE `newsletter_subscribers`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `products`
