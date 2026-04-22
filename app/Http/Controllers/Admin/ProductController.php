@@ -13,7 +13,7 @@ use Illuminate\Support\Str;
 class ProductController extends Controller
 {
     /**
-     * Show all products in admin panel
+     * Show all products in     admin panel
      */
     public function index()
     {
@@ -181,6 +181,11 @@ class ProductController extends Controller
                     ]);
                 }
             }
+        }
+
+        if ($request->deleted_images) {
+            $ids = json_decode($request->deleted_images, true);
+            ProductImage::whereIn('id', $ids)->delete();
         }
 
         return redirect()->route('admin.products.edit', $product->id)->with('success', 'Product updated successfully.');

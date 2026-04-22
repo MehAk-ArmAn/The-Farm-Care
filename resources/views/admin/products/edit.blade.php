@@ -52,7 +52,7 @@
             @method('PUT')
 
             <!-- hidden delete flags -->
-            <input type="hidden" name="remove_featured_image" id="remove_featured_image" value="0">
+            <input type="hidden" name="deleted_images" id="deleted_images">
 
             <!-- grid -->
             <div class="grid gap-6 md:grid-cols-2">
@@ -281,9 +281,9 @@
                         @foreach($product->images as $image)
                             <div class="relative gallery-existing-item" id="gallery-image-{{ $image->id }}">
                                 <input type="hidden"
-                                       name="existing_images[]"
-                                       value="{{ $image->id }}"
-                                       class="existing-image-input">
+                                    name="existing_images[]"
+                                    value="{{ $image->id }}"
+                                    id="existing-input-{{ $image->id }}">
 
                                 <img
                                     src="{{ asset('images/products/' . urlencode($image->image_path)) }}"
@@ -292,7 +292,7 @@
                                 >
 
                                 <button type="button"
-                                        onclick="removeCurrentGalleryImage({{ $image->id }})"
+                                        onclick="markGalleryDelete({{ $image->id }})"
                                         class="absolute -right-2 -top-2 flex h-7 w-7 items-center justify-center rounded-full bg-red-600 text-xs font-bold text-white shadow-md transition hover:bg-red-700">
                                     ×
                                 </button>
@@ -324,140 +324,134 @@
     </div>
 
     <script>
-        let galleryFiles = [];
+let galleryFiles = [];
+let deletedImages = [];
 
-        function addOptionField(value = '') {
-            const wrapper = document.getElementById('options-wrapper');
+function addOptionField(value = '') {
+    const wrapper = document.getElementById('options-wrapper');
 
-            const row = document.createElement('div');
-            row.className = 'option-row flex items-center gap-3';
+    const row = document.createElement('div');
+    row.className = 'option-row flex items-center gap-3';
 
-            row.innerHTML = `
-                <input type="text"
-                       name="options[]"
-                       value="${value}"
-                       placeholder="e.g. Small / Large / 12cm / Straight / Left"
-                       class="w-full rounded-xl border border-slate-300 px-4 py-3 outline-none transition focus:border-blue-600 focus:ring-2 focus:ring-blue-100">
+    row.innerHTML = `
+        <input type="text"
+               name="options[]"
+               value="${value}"
+               class="w-full rounded-xl border border-slate-300 px-4 py-3">
 
+        <button type="button"
+                onclick="removeOptionField(this)"
+                class="px-4 py-3 text-red-600">
+            ×
+        </button>
+    `;
+
+    wrapper.appendChild(row);
+}
+
+function removeOptionField(button) {
+    const wrapper = document.getElementById('options-wrapper');
+    const rows = wrapper.querySelectorAll('.option-row');
+
+    if (rows.length > 1) {
+        button.closest('.option-row').remove();
+    } else {
+        rows[0].querySelector('input').value = '';
+    }
+}
+
+function previewFeaturedImage(event) {
+    const file = event.target.files[0];
+    const previewWrapper = document.getElementById('featured-image-preview');
+    const previewImage = document.getElementById('featured-preview-img');
+
+    if (!file) return;
+
+    previewImage.src = URL.createObjectURL(file);
+    previewWrapper.classList.remove('hidden');
+}
+
+function removeSelectedFeaturedImage() {
+    document.getElementById('featured-image-input').value = '';
+    document.getElementById('featured-image-preview').classList.add('hidden');
+}
+
+function removeCurrentFeaturedImage() {
+    document.getElementById('current-featured-image-box')?.remove();
+    document.getElementById('current-featured-image-removed-text')?.classList.remove('hidden');
+    document.getElementById('remove_featured_image').value = '1';
+}
+
+function previewGalleryImages(event) {
+    galleryFiles = Array.from(event.target.files);
+    renderGalleryPreview();
+    syncGalleryInput();
+}
+
+function renderGalleryPreview() {
+    const preview = document.getElementById('gallery-images-preview');
+    preview.innerHTML = '';
+
+    galleryFiles.forEach((file, index) => {
+        const url = URL.createObjectURL(file);
+
+        preview.innerHTML += `
+            <div class="relative">
+                <img src="${url}" class="h-28 w-full object-cover rounded-xl">
                 <button type="button"
-                        onclick="removeOptionField(this)"
-                        class="shrink-0 rounded-full border border-red-200 bg-red-50 px-4 py-3 text-sm font-semibold text-red-600 transition hover:bg-red-100 hover:text-red-700">
-                    Delete
+                        onclick="removeGalleryImage(${index})"
+                        class="absolute top-1 right-1 bg-red-600 text-white px-2 rounded">
+                    ×
                 </button>
-            `;
+            </div>
+        `;
+    });
+}
 
-            wrapper.appendChild(row);
+function removeGalleryImage(index) {
+    galleryFiles.splice(index, 1);
+    renderGalleryPreview();
+    syncGalleryInput();
+}
+
+function syncGalleryInput() {
+    const input = document.getElementById('gallery-images-input');
+    const dt = new DataTransfer();
+
+    galleryFiles.forEach(file => dt.items.add(file));
+
+    input.files = dt.files;
+}
+
+function markGalleryDelete(imageId) {
+    const item = document.getElementById(`gallery-image-${imageId}`);
+
+    if (item) item.remove();
+
+    deletedImages.push(imageId);
+}
+
+/* SAFE form hook */
+document.addEventListener('DOMContentLoaded', () => {
+    const form = document.querySelector('form');
+
+    if (!form) return;
+
+    form.addEventListener('submit', function () {
+        let hidden = document.getElementById('deleted_images');
+
+        if (!hidden) {
+            hidden = document.createElement('input');
+            hidden.type = 'hidden';
+            hidden.name = 'deleted_images';
+            hidden.id = 'deleted_images';
+            form.appendChild(hidden);
         }
 
-        function removeOptionField(button) {
-            const wrapper = document.getElementById('options-wrapper');
-            const rows = wrapper.querySelectorAll('.option-row');
-
-            if (rows.length > 1) {
-                button.closest('.option-row').remove();
-            } else {
-                const input = rows[0].querySelector('input');
-                input.value = '';
-            }
-        }
-
-        function previewFeaturedImage(event) {
-            const file = event.target.files[0];
-            const previewWrapper = document.getElementById('featured-image-preview');
-            const previewImage = document.getElementById('featured-preview-img');
-
-            if (!file) {
-                previewWrapper.classList.add('hidden');
-                previewImage.src = '';
-                return;
-            }
-
-            previewImage.src = URL.createObjectURL(file);
-            previewWrapper.classList.remove('hidden');
-            document.getElementById('remove_featured_image').value = '0';
-        }
-
-        function removeSelectedFeaturedImage() {
-            const input = document.getElementById('featured-image-input');
-            const previewWrapper = document.getElementById('featured-image-preview');
-            const previewImage = document.getElementById('featured-preview-img');
-
-            input.value = '';
-            previewImage.src = '';
-            previewWrapper.classList.add('hidden');
-        }
-
-        function removeCurrentFeaturedImage() {
-            const box = document.getElementById('current-featured-image-box');
-            const text = document.getElementById('current-featured-image-removed-text');
-            const input = document.getElementById('featured-image-input');
-            const previewWrapper = document.getElementById('featured-image-preview');
-            const previewImage = document.getElementById('featured-preview-img');
-
-            if (box) box.classList.add('hidden');
-            if (text) text.classList.remove('hidden');
-
-            document.getElementById('remove_featured_image').value = '1';
-
-            input.value = '';
-            previewImage.src = '';
-            previewWrapper.classList.add('hidden');
-        }
-
-        function previewGalleryImages(event) {
-            galleryFiles = Array.from(event.target.files);
-            syncGalleryInput();
-            renderGalleryPreview();
-        }
-
-        function renderGalleryPreview() {
-            const preview = document.getElementById('gallery-images-preview');
-            preview.innerHTML = '';
-
-            galleryFiles.forEach((file, index) => {
-                const url = URL.createObjectURL(file);
-
-                const item = document.createElement('div');
-                item.className = 'relative';
-
-                item.innerHTML = `
-                    <img src="${url}"
-                         alt="Gallery Preview"
-                         class="h-28 w-full rounded-2xl border border-slate-200 object-cover shadow-sm">
-
-                    <button type="button"
-                            onclick="removeGalleryImage(${index})"
-                            class="absolute -right-2 -top-2 flex h-7 w-7 items-center justify-center rounded-full bg-red-600 text-xs font-bold text-white shadow-md transition hover:bg-red-700">
-                        ×
-                    </button>
-                `;
-
-                preview.appendChild(item);
-            });
-        }
-
-        function removeGalleryImage(index) {
-            galleryFiles.splice(index, 1);
-            syncGalleryInput();
-            renderGalleryPreview();
-        }
-
-        function syncGalleryInput() {
-            const input = document.getElementById('gallery-images-input');
-            const dataTransfer = new DataTransfer();
-
-            galleryFiles.forEach(file => dataTransfer.items.add(file));
-
-            input.files = dataTransfer.files;
-        }
-
-        function removeCurrentGalleryImage(imageId) {
-            const item = document.getElementById(`gallery-image-${imageId}`);
-            if (item) {
-                item.remove();
-            }
-        }
-    </script>
+        hidden.value = JSON.stringify(deletedImages);
+    });
+});
+</script>
 
 </body>
 </html>

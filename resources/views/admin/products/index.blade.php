@@ -90,11 +90,30 @@
                                         ${{ number_format($product->price ?? 0, 2) }}
                                     </span>
                                     <div class="flex gap-2">
+                                        <!-- Edit -->
                                         <a href="{{ route('admin.products.edit', $product->id) }}"
-                                           class="rounded-full bg-slate-100 p-2 text-slate-600 transition hover:bg-[var(--brand-green)] hover:text-strong">
-                                            <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
+                                        class="rounded-full bg-slate-100 p-2 text-slate-600 transition hover:bg-[var(--brand-green)] hover:text-strong">
+                                            <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/>
+                                            </svg>
                                         </a>
-                                        <!-- Add Delete Form here if needed -->
+
+                                        <!-- Delete -->
+                                        <form action="{{ route('admin.products.destroy', $product->id) }}"
+                                            method="POST"
+                                            onsubmit="return confirm('You sure you want to delete this product?')">
+                                            @csrf
+                                            @method('DELETE')
+
+                                            <button type="submit"
+                                                    class="rounded-full bg-red-100 p-2 text-red-600 transition hover:bg-red-600 hover:text-white">
+                                                <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                        d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6M1 7h22"/>
+                                                </svg>
+                                            </button>
+                                        </form>
                                     </div>
                                 </div>
                             </div>

@@ -15,12 +15,13 @@
 
                 @if($product->images && $product->images->count())
                     <div class="mt-6 grid grid-cols-4 gap-4">
-                        @foreach($product->images->take(4) as $image)
+                        @foreach($product->images as $image)
                             <div class="overflow-hidden rounded-2xl bg-slate-100 ring-1 ring-slate-200">
                                 <img
                                     src="{{ asset('images/products/' . $image->image_path) }}"
                                     alt="{{ $image->alt_text ?: $product->name }}"
-                                    class="h-24 w-full object-cover"
+                                    class="h-24 w-full object-cover cursor-zoom-in"
+                                    onclick="openPreview(this)"
                                 >
                             </div>
                         @endforeach
@@ -52,7 +53,7 @@
                 @endif
 
                 <p class="mt-6 text-base leading-8 text-slate-600">
-                    {{ $product->description ?: 'Detailed product information will appear here once full content is added from the admin panel.' }}
+                    {{ $product->description ?: 'Detailed product information will appear here once full content is added.' }}
                 </p>
 
                 {{-- 🔥 ADD TO INQUIRY FORM --}}
@@ -215,5 +216,41 @@
         </div>
     </div>
 </section>
+
+<!-- IMAGE MODAL -->
+<div id="imagePreview"
+     class="fixed inset-0 z-[999] hidden items-center justify-center bg-black/80">
+
+    <img id="previewImg"
+         class="max-h-[85%] max-w-[85%] rounded-2xl shadow-2xl">
+
+</div>
+
+<script>
+const modal = document.getElementById('imagePreview');
+const modalImg = document.getElementById('previewImg');
+
+function openPreview(img) {
+    modalImg.src = img.src;      // set image
+    modal.classList.remove('hidden');
+    modal.classList.add('flex');  // show modal
+}
+
+// close when clicking anywhere outside image
+modal.addEventListener('click', (e) => {
+    if (e.target !== modalImg) {
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+    }
+});
+
+// close on ESC
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+    }
+});
+</script>
 
 @endsection

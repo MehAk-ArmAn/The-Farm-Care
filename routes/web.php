@@ -119,6 +119,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
         |--------------------------------------------------------------------------
         */
         Route::resource('products', AdminProductController::class);
+        Route::delete('/admin/products/{id}', [AdminProductController::class, 'destroy'])
+         ->name('admin.products.destroy');
         Route::resource('categories', CategoryController::class);
         Route::resource('testimonials', TestimonialController::class);
         Route::get('/contacts', [ContactController::class, 'index'])->name('contacts.index');
