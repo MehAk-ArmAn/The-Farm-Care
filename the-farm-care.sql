@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 20, 2026 at 03:25 PM
+-- Generation Time: Apr 22, 2026 at 04:02 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -66,9 +66,15 @@ CREATE TABLE `categories` (
 --
 
 INSERT INTO `categories` (`id`, `name`, `slug`, `description`, `is_active`, `created_at`, `updated_at`) VALUES
-(1, 'Dental Instruments', 'dental-instruments', NULL, 1, '2026-04-09 14:37:03', '2026-04-09 14:37:03'),
-(2, 'Veterinary Instruments', 'veterinary-instruments', NULL, 1, '2026-04-09 14:37:15', '2026-04-09 14:37:15'),
-(3, 'Hunting Knives', 'hunting-knives', NULL, 1, '2026-04-09 14:37:26', '2026-04-09 14:37:26');
+(4, 'Castration Plier', 'castration-plier', NULL, 1, '2026-04-22 06:44:53', '2026-04-22 06:44:53'),
+(5, 'Drenching Gun', 'drenching-gun', NULL, 1, '2026-04-22 07:43:18', '2026-04-22 07:43:18'),
+(6, 'Dehorning equipments', 'dehorning-equipments', NULL, 1, '2026-04-22 07:50:48', '2026-04-22 07:50:48'),
+(7, 'Sucking prevention', 'sucking-prevention', NULL, 1, '2026-04-22 07:55:53', '2026-04-22 07:55:53'),
+(8, 'Teat Diliators', 'teat-diliators', NULL, 1, '2026-04-22 07:56:12', '2026-04-22 07:56:12'),
+(9, 'Bull Nose Rings', 'bull-nose-rings', NULL, 1, '2026-04-22 07:56:24', '2026-04-22 07:56:24'),
+(10, 'Artificial insemination', 'artificial-insemination', NULL, 1, '2026-04-22 07:56:38', '2026-04-22 07:56:38'),
+(11, 'Syringes', 'syringes', NULL, 1, '2026-04-22 07:56:49', '2026-04-22 07:56:49'),
+(12, 'Bolus Gun', 'bolus-gun', NULL, 1, '2026-04-22 07:57:01', '2026-04-22 07:57:01');
 
 -- --------------------------------------------------------
 
@@ -275,19 +281,34 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id`, `category_id`, `name`, `slug`, `short_title`, `short_description`, `description`, `sku`, `price`, `featured_image`, `is_featured`, `is_active`, `sort_order`, `created_at`, `updated_at`) VALUES
-(1, 2, 'Hoof Trimming Tool (Rubber Handle)', 'hoof-trimming-tool-rubber-handle-1775760408', NULL, NULL, 'Heavy-duty livestock hoof trimming tool with ergonomic red rubber grips. Designed for strong control and precision cutting. Durable stainless steel body ensures long-term farm use.', NULL, 0.00, 'Hoof Trimming Tool (Rubber Handle).jpg', 1, 1, 0, '2026-04-05 04:34:36', '2026-04-10 06:16:30'),
-(2, 1, 'Fig. 23 Lower Molars, Right', 'fig-23-lower-molars-right-1775761997', NULL, NULL, NULL, NULL, 0.00, 'Fig. 23 Lower Molars, Right.jpg', 1, 1, 1, '2026-04-05 04:45:06', '2026-04-10 06:15:59'),
-(3, 1, 'MICRO-ADSON', 'micro-adson-1775760178', NULL, NULL, 'Precision dental tweezers with serrated tips for firm grip. Ideal for handling cotton, dressings, and small dental materials during procedures.', NULL, 0.00, 'MICRO-ADSON.jpg', 0, 1, 0, '2026-04-05 04:45:55', '2026-04-09 14:42:58'),
-(6, 1, 'Fig. 29S upper roots for children', 'fig-29s-upper-roots-for-children-1775760129', NULL, NULL, 'Slim beak dental forceps designed for incisor and root extraction. Offers enhanced accuracy in tight spaces with strong grip control.', NULL, 0.00, 'Fig. 29S upper roots for children.jpg', 0, 1, 0, '2026-04-05 04:47:19', '2026-04-10 06:21:18'),
-(7, 1, 'Fig. 18 Upper Molars, Left', 'fig-18-upper-molars-left-1775760076', NULL, NULL, 'Angled beak design allows better access to difficult areas in the mouth. Ideal for precise tooth extraction with improved visibility.', NULL, 0.00, 'Fig. 18 Upper Molars, Left.jpg', 0, 1, 0, '2026-04-05 04:47:58', '2026-04-09 14:41:16'),
-(8, 1, 'SAMII', 'samii-1775759972', NULL, NULL, 'Professional dental measuring forceps with 4mm tip for precise clinical measurements. Strong and lightweight design.', NULL, 0.00, 'SAMII.jpg', 1, 1, 0, '2026-04-05 04:48:40', '2026-04-10 06:15:34'),
-(9, 3, 'Art # FC-H-01', 'art-fc-h-01-1775760875', NULL, NULL, NULL, NULL, 0.00, '1775760574_69d7f4be78d99.jpg', 1, 1, 2, '2026-04-09 14:49:34', '2026-04-09 14:54:35'),
-(10, 3, 'Art # FC-H-02', 'art-fc-h-02-69d8cd6279e7a', NULL, NULL, NULL, NULL, 0.00, '1775816034_featured_art-fc-h-02.jpg', 0, 1, 0, '2026-04-10 06:13:54', '2026-04-10 06:15:10'),
-(11, 2, 'Art # FC-2898', 'art-fc-2898-69d8cecf82722', NULL, NULL, NULL, NULL, 0.00, '1775816399_featured_art-fc-2898.jpg', 0, 1, 0, '2026-04-10 06:19:59', '2026-04-10 06:31:04'),
-(12, NULL, 'Castrator for bloodless castration', 'castrator-for-bloodless-castration-69d8d1c125ef2', 'Art # FC-2897', NULL, NULL, NULL, 0.00, '1775817153_featured_Castrator for bloodless castration.jpg', 0, 1, 0, '2026-04-10 06:32:33', '2026-04-10 06:32:33'),
-(13, 2, 'Art # FC-2910', 'art-fc-2910-69d8d2ce0f21d', NULL, NULL, NULL, NULL, 0.00, '1775817422_featured_art-fc-2910.jpg', 0, 1, 0, '2026-04-10 06:37:02', '2026-04-10 06:37:02'),
-(14, 2, 'Art # FC-2913', 'art-fc-2913-69d8d36f9dc08', NULL, NULL, NULL, NULL, 0.00, '1775817583_featured_art-fc-2913.jpg', 1, 1, 0, '2026-04-10 06:39:43', '2026-04-10 06:39:43'),
-(15, 2, 'Art # FC-2912', 'art-fc-2912-69d8d3e9b458d', NULL, NULL, NULL, NULL, 0.00, '1775817705_featured_art-fc-2912.jpg', 0, 1, 0, '2026-04-10 06:41:45', '2026-04-10 06:41:45');
+(18, 4, 'Elastrator for castration and  Tail Dock', 'elastrator-for-castration-and-tail-dock-69e8ad4e4d5a6', NULL, 'Castrator for bloodless castration.\r\n\r\nCastration pliers are designed for labor-saving, comfortable and easy to hold and use.\r\n\r\nWith this tool no need to cut animal scrotum and no bleeding, reduce the risk of injury.\r\n\r\nMade of high quality plastic and metal material, which is durable.', 'Castrator for bloodless castration.\r\n\r\nCastration pliers are designed for labor-saving, comfortable and easy to hold and use.\r\n\r\nWith this tool no need to cut animal scrotum and no bleeding, reduce the risk of injury.\r\n\r\nMade of high quality plastic and metal material, which is durable.', NULL, 0.00, '1776856398_featured_3D.jpg', 1, 1, 1, '2026-04-22 07:13:18', '2026-04-22 07:45:35'),
+(19, 5, 'Adjustable Dose DRENCHERS', 'adjustable-dose-drenchers-69e8b4c2a4cfe', NULL, 'Easy to use for cattle and sheep,Goats\r\n\r\nBody is made with durable plastic ,  curved metal drenching nozzle.\r\n\r\nThe drencher is adjustable by 1ML-10ML- increments and has a replaceable o-ring.\r\n\r\nWashable and durable high quality product.', 'Easy to use for cattle and sheep,Goats\r\n\r\nBody is made with durable plastic ,  curved metal drenching nozzle.\r\n\r\nThe drencher is adjustable by 1ML-10ML- increments and has a replaceable o-ring.\r\n\r\nWashable and durable high quality product.', NULL, 0.00, '1776858306_featured_1.JPG', 0, 1, 0, '2026-04-22 07:45:07', '2026-04-22 07:46:30'),
+(20, 5, 'Manual fix  Dose DRENCHERS', 'manual-fix-dose-drenchers-69e8b56b11300', NULL, 'Easy to use for cattles \r\n\r\nBody is made with durable plastic ,  curved metal drenching nozzle.\r\n\r\nThe drencher is used for fix amount of liquid and has a replaceable o-ring.\r\n\r\nWashable and durable high quality product.', 'Easy to use for cattles \r\n\r\nBody is made with durable plastic ,  curved metal drenching nozzle.\r\n\r\nThe drencher is used for fix amount of liquid and has a replaceable o-ring.\r\n\r\nWashable and durable high quality product.', NULL, 0.00, '1776858475_featured_2.JPG', 0, 1, 0, '2026-04-22 07:47:55', '2026-04-22 07:47:55'),
+(21, 5, 'Stainless steel Adjustable Dose DRENCHERS', 'stainless-steel-adjustable-dose-drenchers-69e8b5efd7121', NULL, 'Easy to use for small animals pigs,sheep, goats  \r\n\r\nBody is made with durable steel ,  curved metal drenching nozzle.\r\n\r\nThe drencher is used for adjustable liquid and has a replaceable o-ring.\r\n\r\nWashable and durable high quality product.', 'Easy to use for small animals pigs,sheep, goats  \r\n\r\nBody is made with durable steel ,  curved metal drenching nozzle.\r\n\r\nThe drencher is used for adjustable liquid and has a replaceable o-ring.\r\n\r\nWashable and durable high quality product.', NULL, 0.00, '1776858607_featured_3.jpg', 0, 1, 0, '2026-04-22 07:50:07', '2026-04-22 07:50:07'),
+(22, 6, 'ELECTRIC DEHOENER', 'electric-dehoener-69e8b66fe4fc5', NULL, 'comes with interchangeable Extra two copper tips \r\n\r\n(1\" OD and 13/16\" ID)\r\n\r\n(3/4\" OD and 5/8\" ID)\r\n\r\n Dehorn young calves or goats with no loss of blood.', 'comes with interchangeable Extra two copper tips \r\n\r\n(1\" OD and 13/16\" ID)\r\n\r\n(3/4\" OD and 5/8\" ID)\r\n\r\n Dehorn young calves or goats with no loss of blood.', NULL, 0.00, '1776858735_featured_1.JPG', 0, 1, 0, '2026-04-22 07:52:15', '2026-04-22 07:52:15'),
+(23, 6, 'ELECTRIC DEHOENER', 'electric-dehoener-69e8b6b585a2e', NULL, 'Dehorn young calves or goats with no loss of blood.\r\n\r\nStandard size \r\n\r\nAvailable in Wooden handle. easy to use .', 'Dehorn young calves or goats with no loss of blood.\r\n\r\nStandard size \r\n\r\nAvailable in Wooden handle. easy to use .', NULL, 0.00, '1776858805_featured_2.JPG', 0, 1, 0, '2026-04-22 07:53:25', '2026-04-22 07:53:25'),
+(24, 6, 'BARNES DEHOENER', 'barnes-dehoener-69e8b716592fc', NULL, 'Length:   13\" 17\"\r\n\r\nAvailable in Angled and straight handles.\r\n\r\nStainless Steel cutting edges\r\n\r\nDurable construction wodden and plastic Grips\r\n\r\nBarnes dehorn your cattle quickly with minimum stress,\r\n\r\nHardened steel blades ensure years of trouble free performance', 'Length:   13\" 17\"\r\n\r\nAvailable in Angled and straight handles.\r\n\r\nStainless Steel cutting edges\r\n\r\nDurable construction wodden and plastic Grips\r\n\r\nBarnes dehorn your cattle quickly with minimum stress,\r\n\r\nHardened steel blades ensure years of trouble free performance', NULL, 0.00, '1776858902_featured_3.jpg', 0, 1, 0, '2026-04-22 07:55:02', '2026-04-22 07:55:02'),
+(25, 7, 'Milk Preventer', 'milk-preventer-69e8b81769e0f', NULL, 'Plastic milk sucking preventer with butterfly adjustment nut\r\n\r\nUsed to wean a calf from its mother\r\n\r\nEasily attaches to the calf nose. \r\n\r\nPokes the mother when calf tries to nurse\r\n\r\nDifferent colors available on customer demand', 'Plastic milk sucking preventer with butterfly adjustment nut\r\n\r\nUsed to wean a calf from its mother\r\n\r\nEasily attaches to the calf nose. \r\n\r\nPokes the mother when calf tries to nurse\r\n\r\nDifferent colors available on customer demand', NULL, 0.00, '1776859159_featured_1.jpg', 0, 1, 0, '2026-04-22 07:59:19', '2026-04-22 07:59:19'),
+(26, 7, 'Milk Preventer silver', 'milk-preventer-silver-69e8b8ab31edc', NULL, 'Easily attaches to the calf nose. \r\n \r\n durable made with silver', 'Easily attaches to the calf nose. \r\n \r\n durable made with silver', NULL, 0.00, '1776859307_featured_4.jpg', 0, 1, 0, '2026-04-22 08:01:47', '2026-04-22 08:01:47'),
+(27, 7, 'Milk Preventer', 'milk-preventer-69e8b99745828', NULL, 'Available in copper ,Brass, S.S \r\n\r\nDesigned for calves and young cattle\r\n\r\nFor the Prevention of nursing from the mother\r\n\r\nEncourages the calves switch to feed\r\n\r\nDecreases urine drinking and cross-sucking with other cattle\r\n\r\nRing design makes it impossible for the cow to lose it', 'Available in copper ,Brass, S.S \r\n\r\nDesigned for calves and young cattle\r\n\r\nFor the Prevention of nursing from the mother\r\n\r\nEncourages the calves switch to feed\r\n\r\nDecreases urine drinking and cross-sucking with other cattle\r\n\r\nRing design makes it impossible for the cow to lose it', NULL, 0.00, '1776859543_featured_5.jpg', 0, 1, 0, '2026-04-22 08:05:43', '2026-04-22 08:05:43'),
+(28, 8, 'MILK SIPHON', 'milk-siphon-69e8ba624df41', NULL, 'SIZE\r\n\r\n  APPROX \r\n\r\n  Legnth  4\"\r\n\r\n  Dia 2mm-3mm\r\n\r\n  Made from S.S', 'SIZE\r\n\r\n  APPROX \r\n\r\n  Legnth  4\"\r\n\r\n  Dia 2mm-3mm\r\n\r\n  Made from S.S', NULL, 0.00, '1776859746_featured_1.JPG', 0, 1, 0, '2026-04-22 08:09:06', '2026-04-22 08:09:06'),
+(29, 8, 'Teat Dilator', 'teat-dilator-69e8ba9e845dc', NULL, 'SIZE\r\n \r\nstandard\r\n\r\nmade from S.S\r\n\r\nwith adjustable screw', 'SIZE\r\n \r\nstandard\r\n\r\nmade from S.S\r\n\r\nwith adjustable screw', NULL, 0.00, '1776859806_featured_2.JPG', 0, 1, 0, '2026-04-22 08:10:06', '2026-04-22 08:10:06'),
+(30, 8, 'Teat Tumor Extractor', 'teat-tumor-extractor-69e8bae24b29d', NULL, 'The Teat Tumor Extractor is an effective tool with and without blades.\r\nUsed to remove fibrous tissue to prevent calculi from forming\r\n.Stainless steel. Allows for easy and rapid removal \r\nof calculi formations from the teat canal.', 'The Teat Tumor Extractor is an effective tool with and without blades.\r\nUsed to remove fibrous tissue to prevent calculi from forming\r\n.Stainless steel. Allows for easy and rapid removal \r\nof calculi formations from the teat canal.', NULL, 0.00, '1776859874_featured_3.JPG', 0, 1, 0, '2026-04-22 08:11:14', '2026-04-22 08:11:14'),
+(31, 8, 'Teat Dilator', 'teat-dilator-69e8bb34cbf0b', NULL, 'made from S.S', 'made from S.S', NULL, 0.00, '1776859956_featured_4.JPG', 0, 1, 0, '2026-04-22 08:12:36', '2026-04-22 08:12:36'),
+(32, 9, 'Bull Nose Ring BRASS', 'bull-nose-ring-brass-69e8bbc5c9d33', NULL, 'Made with high quality brass bull nose ring Ideal for bull holding\r\n\r\n Long sharp piercing point ensures a clean cut.\r\n\r\n Nose Ring come with screw. With L key/screw driver \r\n \r\n After application, extra part of the screw breaks off.', 'Made with high quality brass bull nose ring Ideal for bull holding\r\n\r\n Long sharp piercing point ensures a clean cut.\r\n\r\n Nose Ring come with screw. With L key/screw driver \r\n \r\n After application, extra part of the screw breaks off.', NULL, 0.00, '1776860101_featured_1.JPG', 0, 1, 0, '2026-04-22 08:15:02', '2026-04-22 08:15:02'),
+(33, 9, 'Bull Nose Ring s.s', 'bull-nose-ring-ss-69e8bc58e5590', NULL, 'Made with high quality brass bull nose ring Ideal for bull holding\r\n\r\n Long sharp piercing point ensures a clean cut.\r\n\r\n Nose Ring come with screw. With L key/screw driver \r\n \r\n After application, extra part of the screw breaks off.', 'Made with high quality brass bull nose ring Ideal for bull holding\r\n\r\n Long sharp piercing point ensures a clean cut.\r\n\r\n Nose Ring come with screw. With L key/screw driver \r\n \r\n After application, extra part of the screw breaks off.', NULL, 0.00, '1776860248_featured_2.JPG', 0, 1, 0, '2026-04-22 08:17:28', '2026-04-22 08:17:28'),
+(34, 9, 'Bull HOLDER S.S', 'bull-holder-ss-69e8bca7e2310', NULL, 'Made with high quality brass bull nose ring Ideal for bull holding\r\n\r\n Long sharp piercing point ensures a clean cut.\r\n\r\n Nose Ring come with screw. With L key/screw driver \r\n \r\n After application, extra part of the screw breaks off.', 'Made with high quality brass bull nose ring Ideal for bull holding\r\n\r\n Long sharp piercing point ensures a clean cut.\r\n\r\n Nose Ring come with screw. With L key/screw driver \r\n \r\n After application, extra part of the screw breaks off.', NULL, 0.00, '1776860327_featured_2.JPG', 0, 1, 0, '2026-04-22 08:18:47', '2026-04-22 08:18:47'),
+(35, 4, 'BURDIZZO CASTRATION PLIER', 'burdizzo-castration-plier-69e8bd5bb0425', NULL, 'Castrator for bloodless castration.\r\n\r\nPlainly crush testicular cords without breaking the skin.\r\n\r\nAvailable in Wooden and Plastic handle', 'Castrator for bloodless castration.\r\n\r\nPlainly crush testicular cords without breaking the skin.\r\n\r\nAvailable in Wooden and Plastic handle', NULL, 0.00, '1776860507_featured_1.JPG', 0, 1, 0, '2026-04-22 08:21:47', '2026-04-22 08:21:47'),
+(36, 4, '...', '69e8bddd43a2c', NULL, 'Castrator for bloodless castration.\r\n\r\nPlainly crush testicular cords without breaking the skin.\r\n\r\nAvailable in Wooden and Plastic handle', 'Castrator for bloodless castration.\r\n\r\nPlainly crush testicular cords without breaking the skin.\r\n\r\nAvailable in Wooden and Plastic handle', NULL, 0.00, '1776860669_featured_2.JPG', 0, 1, 0, '2026-04-22 08:23:57', '2026-04-22 08:24:29'),
+(37, 10, 'AI Gun - Conical O-Ring', 'ai-gun-conical-o-ring-69e8c8042d87e', NULL, 'Three different models compatible with both 0.5 ml. and 0.25 ml. straws\r\n\r\nLength of Barrel           435 mm. \r\nOuter Diameter of Barrel   3.60 mm.\r\nTotal Length of Plunger    449 mm', 'Three different models compatible with both 0.5 ml. and 0.25 ml. straws\r\n\r\nLength of Barrel           435 mm. \r\nOuter Diameter of Barrel   3.60 mm.\r\nTotal Length of Plunger    449 mm', NULL, 0.00, '1776863236_featured_1.JPG', 0, 1, 0, '2026-04-22 09:07:16', '2026-04-22 09:07:16'),
+(38, 10, 'AI Gun Self-Lock', 'ai-gun-self-lock-69e8cb6e26ad0', NULL, 'The Barrel is fitted with an elevated ring (casting)\r\n At the bottom and fits with disposable AI Sheaths seamlessly\r\n. The Plunger is crafted with desirable\r\n Flexibility allowing it to withstand bending, \r\nwithout any loss in shape.', 'The Barrel is fitted with an elevated ring (casting)\r\n At the bottom and fits with disposable AI Sheaths seamlessly\r\n. The Plunger is crafted with desirable\r\n Flexibility allowing it to withstand bending, \r\nwithout any loss in shape.', NULL, 0.00, '1776864110_featured_2.png', 0, 1, 0, '2026-04-22 09:21:50', '2026-04-22 09:21:50'),
+(39, 10, 'Universal Auto-Lock', 'universal-auto-lock-69e8cbdd6d210', NULL, 'compatible with both 0.5 ml. and 0.25 ml. straws', 'compatible with both 0.5 ml. and 0.25 ml. straws', NULL, 0.00, '1776864221_featured_3.png', 0, 1, 0, '2026-04-22 09:23:41', '2026-04-22 09:23:41'),
+(40, 10, 'Disposable Insemination Gloves', 'disposable-insemination-gloves-69e8cc2be99ea', NULL, 'Gloves mainly used for cattle, buffalo, horses\r\n and asses the rectum palpation, ovaries, pregnancy test,\r\n Obstetric and artificial crown fine, \r\nis to prevent workers suffering from occupational diseases\r\n and the female cross infection reproductive diseases.', 'Gloves mainly used for cattle, buffalo, horses\r\n and asses the rectum palpation, ovaries, pregnancy test,\r\n Obstetric and artificial crown fine, \r\nis to prevent workers suffering from occupational diseases\r\n and the female cross infection reproductive diseases.', NULL, 0.00, '1776864299_featured_4.jpg', 0, 1, 0, '2026-04-22 09:24:59', '2026-04-22 09:24:59'),
+(41, 10, 'Straw Cutter', 'straw-cutter-69e8cc9d7f6c9', NULL, 'made with high quality plastic\r\nEasy to use fine quality with sharp edge balde .', 'made with high quality plastic\r\nEasy to use fine quality with sharp edge balde .', NULL, 0.00, '1776864413_featured_5 Straw-Cutter.jpg', 0, 1, 0, '2026-04-22 09:26:53', '2026-04-22 09:26:53'),
+(43, 11, 'TPX Syringe', 'tpx-syringe', 'TPX High Temp Syringe', 'High temp resistant syringe with multiple sizes', 'TPX material with high temperature tolerance, acid resistance, alcohol resistance, much longer service time. The syringe fit to needle perfectly for easily and smoothly flowing. It is fit to all kinds of needle too. Inner part is stainless material with clear and durable scale. Sealing gasket is well-sealed, no air and no liquid leakage.', 'SYR-TPX-001', 0.00, '1776866291_featured_1.JPG', 0, 1, 1, '2026-04-22 09:53:38', '2026-04-22 09:58:11'),
+(44, 11, 'Plastic Body Transparent Syringe', 'plastic-body-transparent-syringe', 'Transparent Syringe', 'Unbreakable washable syringe', 'Unbreakable washable syringe easy use', 'SYR-PLASTIC-002', 0.00, '1776866221_featured_6.JPG', 0, 1, 2, '2026-04-22 09:54:02', '2026-04-22 09:57:01'),
+(45, 12, '...', '69e8d48e43493', NULL, NULL, NULL, NULL, 0.00, '1776866446_featured_39.JPG', 0, 1, 0, '2026-04-22 10:00:46', '2026-04-22 10:00:46'),
+(46, 12, '...', '69e8d4a97d4c2', NULL, NULL, NULL, NULL, 0.00, '1776866513_featured_41.JPG', 0, 1, 0, '2026-04-22 10:01:13', '2026-04-22 10:01:53');
 
 -- --------------------------------------------------------
 
@@ -310,26 +331,46 @@ CREATE TABLE `product_images` (
 --
 
 INSERT INTO `product_images` (`id`, `product_id`, `image_path`, `alt_text`, `sort_order`, `created_at`, `updated_at`) VALUES
-(1, 1, 'F4jfCxnveMVQIwjq5FWmY1EejWZztaW5280KdBAS.jpg', NULL, 0, '2026-04-05 04:34:39', '2026-04-05 04:34:39'),
-(2, 2, 'LSjFvq5EG8l0jDhw64zYO4iVCM8plTu68X5aEz1s.jpg', NULL, 0, '2026-04-05 04:45:06', '2026-04-05 04:45:06'),
-(3, 3, 'VMdKQiWHksxxSgk8BfjvTNzIcsL7LaA5kJcE9n1M.jpg', NULL, 0, '2026-04-05 04:45:55', '2026-04-05 04:45:55'),
-(5, 6, '5vFNTIsceEiIG4IG1DlF34YEPRCpwY5koaPkxL8f.jpg', NULL, 0, '2026-04-05 04:47:19', '2026-04-05 04:47:19'),
-(6, 7, '5OJmCA4JwsNQAhfTmGDcBApjw9Ehpr0Me6NKiqou.jpg', NULL, 0, '2026-04-05 04:47:58', '2026-04-05 04:47:58'),
-(7, 8, 'CYAClLAATEW1IOpLxeB3qsf2YwDecw0mEPTYZFlW.jpg', NULL, 0, '2026-04-05 04:48:40', '2026-04-05 04:48:40'),
-(8, 8, '1775759972_69d7f2648bf9a.jpg', 'SAMII', 1, '2026-04-09 14:39:32', '2026-04-09 14:39:32'),
-(9, 7, '1775760076_69d7f2cc8b2dd.jpg', 'Fig. 18 Upper Molars, Left', 1, '2026-04-09 14:41:16', '2026-04-09 14:41:16'),
-(10, 6, '1775760129_69d7f3018db5d.jpg', 'Fig. 29S upper roots for children', 1, '2026-04-09 14:42:09', '2026-04-09 14:42:09'),
-(11, 3, '1775760178_69d7f332767f0.jpg', 'MICRO-ADSON', 1, '2026-04-09 14:42:58', '2026-04-09 14:42:58'),
-(12, 2, '1775760220_69d7f35c818ad.jpg', 'Fig. 23 Lower Molars, Right', 1, '2026-04-09 14:43:40', '2026-04-09 14:43:40'),
-(13, 1, '1775760251_69d7f37b3e6f5.jpg', 'Hoof Trimming Tool (Rubber Handle)', 1, '2026-04-09 14:44:11', '2026-04-09 14:44:11'),
-(14, 9, '1775760574_69d7f4be78d99.jpg', 'Art # FC-H-01', 0, '2026-04-09 14:49:34', '2026-04-09 14:49:34'),
-(16, 10, '1775816034_0_Art # FC-H-02.jpg', 'Art # FC-H-02', 0, '2026-04-10 06:13:54', '2026-04-10 06:13:54'),
-(17, 11, '1775816399_0_Art # FC-2898.jpg', 'Art # FC-2898', 0, '2026-04-10 06:19:59', '2026-04-10 06:19:59'),
-(18, 11, '1775816997_0_art-fc-2898.jpg', 'Art # FC-2898', 0, '2026-04-10 06:29:57', '2026-04-10 06:29:57'),
-(19, 12, '1775817153_0_Castrator for bloodless castration.jpg', 'Castrator for bloodless castration', 0, '2026-04-10 06:32:33', '2026-04-10 06:32:33'),
-(20, 13, '1775817422_0_art-fc-2910.jpg', 'Art # FC-2910', 0, '2026-04-10 06:37:02', '2026-04-10 06:37:02'),
-(21, 14, '1775817583_0_art-fc-2913.jpg', 'Art # FC-2913', 0, '2026-04-10 06:39:43', '2026-04-10 06:39:43'),
-(22, 15, '1775817705_0_art-fc-2912.jpg', 'Art # FC-2912', 0, '2026-04-10 06:41:45', '2026-04-10 06:41:45');
+(26, 18, '1776856398_0_3.jpg', 'Elastrator for castration and  Tail Dock', 0, '2026-04-22 07:13:18', '2026-04-22 07:13:18'),
+(27, 18, '1776857143_0_3B.jpg', 'Elastrator for castration and  Tail Dock', 0, '2026-04-22 07:25:43', '2026-04-22 07:25:43'),
+(28, 18, '1776857156_0_3c.jpg', 'Elastrator for castration and  Tail Dock', 0, '2026-04-22 07:25:56', '2026-04-22 07:25:56'),
+(30, 18, '1776857308_0_4B.jpg', 'Elastrator for castration and  Tail Dock', 0, '2026-04-22 07:28:28', '2026-04-22 07:28:28'),
+(31, 18, '1776857323_0_4C.jpg', 'Elastrator for castration and  Tail Dock', 0, '2026-04-22 07:28:43', '2026-04-22 07:28:43'),
+(32, 18, '1776857335_0_4D.jpg', 'Elastrator for castration and  Tail Dock', 0, '2026-04-22 07:28:55', '2026-04-22 07:28:55'),
+(33, 18, '1776857349_0_4E.jpg', 'Elastrator for castration and  Tail Dock', 0, '2026-04-22 07:29:09', '2026-04-22 07:29:09'),
+(34, 18, '1776857369_0_4F.jpg', 'Elastrator for castration and  Tail Dock', 0, '2026-04-22 07:29:29', '2026-04-22 07:29:29'),
+(35, 19, '1776858307_0_1H.jpg', 'Adjustable Dose DRENCHERS', 0, '2026-04-22 07:45:07', '2026-04-22 07:45:07'),
+(36, 20, '1776858475_0_2A.jpg', 'Manual fix  Dose DRENCHERS', 0, '2026-04-22 07:47:55', '2026-04-22 07:47:55'),
+(37, 21, '1776858608_0_3.jpg', 'Stainless steel Adjustable Dose DRENCHERS', 0, '2026-04-22 07:50:08', '2026-04-22 07:50:08'),
+(38, 22, '1776858736_0_1.JPG', 'ELECTRIC DEHOENER', 0, '2026-04-22 07:52:16', '2026-04-22 07:52:16'),
+(39, 23, '1776858805_0_2.JPG', 'ELECTRIC DEHOENER', 0, '2026-04-22 07:53:25', '2026-04-22 07:53:25'),
+(40, 24, '1776858902_0_3.jpg', 'BARNES DEHOENER', 0, '2026-04-22 07:55:02', '2026-04-22 07:55:02'),
+(41, 25, '1776859159_0_3.JPG', 'Milk Preventer', 0, '2026-04-22 07:59:19', '2026-04-22 07:59:19'),
+(42, 26, '1776859307_0_4.jpg', 'Milk Preventer silver', 0, '2026-04-22 08:01:47', '2026-04-22 08:01:47'),
+(43, 27, '1776859543_0_5.jpg', 'Milk Preventer', 0, '2026-04-22 08:05:43', '2026-04-22 08:05:43'),
+(44, 28, '1776859746_0_1C.JPG', 'MILK SIPHON', 0, '2026-04-22 08:09:06', '2026-04-22 08:09:06'),
+(45, 29, '1776859806_0_2.JPG', 'Teat Dilator', 0, '2026-04-22 08:10:06', '2026-04-22 08:10:06'),
+(46, 30, '1776859874_0_3A.JPG', 'Teat Tumor Extractor', 0, '2026-04-22 08:11:14', '2026-04-22 08:11:14'),
+(47, 30, '1776859892_0_3B.jpg', 'Teat Tumor Extractor', 0, '2026-04-22 08:11:32', '2026-04-22 08:11:32'),
+(48, 31, '1776859957_0_4.JPG', 'Teat Dilator', 0, '2026-04-22 08:12:37', '2026-04-22 08:12:37'),
+(49, 35, '1776860507_0_1A.JPG', 'BURDIZZO CASTRATION PLIER', 0, '2026-04-22 08:21:47', '2026-04-22 08:21:47'),
+(50, 36, '1776860669_0_2A.JPG', '...', 0, '2026-04-22 08:24:29', '2026-04-22 08:24:29'),
+(51, 36, '1776860683_0_2B.jpg', '...', 0, '2026-04-22 08:24:43', '2026-04-22 08:24:43'),
+(52, 37, '1776863236_0_1A.JPG', 'AI Gun - Conical O-Ring', 0, '2026-04-22 09:07:16', '2026-04-22 09:07:16'),
+(53, 37, '1776863252_0_1B.JPG', 'AI Gun - Conical O-Ring', 0, '2026-04-22 09:07:32', '2026-04-22 09:07:32'),
+(54, 37, '1776863263_0_1C.JPG', 'AI Gun - Conical O-Ring', 0, '2026-04-22 09:07:43', '2026-04-22 09:07:43'),
+(55, 38, '1776864110_0_2.png', 'AI Gun Self-Lock', 0, '2026-04-22 09:21:50', '2026-04-22 09:21:50'),
+(56, 39, '1776864221_0_3.png', 'Universal Auto-Lock', 0, '2026-04-22 09:23:41', '2026-04-22 09:23:41'),
+(57, 40, '1776864300_0_4A.jpg', 'Disposable Insemination Gloves', 0, '2026-04-22 09:25:00', '2026-04-22 09:25:00'),
+(58, 40, '1776864316_0_4B.jpg', 'Disposable Insemination Gloves', 0, '2026-04-22 09:25:16', '2026-04-22 09:25:16'),
+(59, 40, '1776864328_0_4C.jpg', 'Disposable Insemination Gloves', 0, '2026-04-22 09:25:28', '2026-04-22 09:25:28'),
+(60, 41, '1776864414_0_5 Straw-Cutter.jpg', 'Straw Cutter', 0, '2026-04-22 09:26:54', '2026-04-22 09:26:54'),
+(69, 44, '1776866221_0_7.JPG', 'Plastic Body Transparent Syringe', 0, '2026-04-22 09:57:01', '2026-04-22 09:57:01'),
+(70, 44, '1776866231_0_8.JPG', 'Plastic Body Transparent Syringe', 0, '2026-04-22 09:57:11', '2026-04-22 09:57:11'),
+(71, 43, '1776866291_0_2.JPG', 'TPX Syringe', 0, '2026-04-22 09:58:11', '2026-04-22 09:58:11'),
+(72, 43, '1776866303_0_3.JPG', 'TPX Syringe', 0, '2026-04-22 09:58:23', '2026-04-22 09:58:23'),
+(73, 45, '1776866487_0_39.JPG', '...', 0, '2026-04-22 10:01:27', '2026-04-22 10:01:27'),
+(74, 46, '1776866513_0_41b.JPG', '...', 0, '2026-04-22 10:01:53', '2026-04-22 10:01:53');
 
 -- --------------------------------------------------------
 
@@ -345,6 +386,72 @@ CREATE TABLE `product_options` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `product_options`
+--
+
+INSERT INTO `product_options` (`id`, `product_id`, `option_name`, `sort_order`, `created_at`, `updated_at`) VALUES
+(66, 18, 'Standard', 0, '2026-04-22 07:45:35', '2026-04-22 07:45:35'),
+(67, 18, 'Large', 1, '2026-04-22 07:45:36', '2026-04-22 07:45:36'),
+(68, 18, 'Extra Large', 2, '2026-04-22 07:45:36', '2026-04-22 07:45:36'),
+(69, 19, '20 ML', 0, '2026-04-22 07:46:30', '2026-04-22 07:46:30'),
+(70, 19, '30 ML', 1, '2026-04-22 07:46:31', '2026-04-22 07:46:31'),
+(71, 19, '50 ML', 2, '2026-04-22 07:46:31', '2026-04-22 07:46:31'),
+(72, 19, '60 ML', 3, '2026-04-22 07:46:31', '2026-04-22 07:46:31'),
+(73, 19, '120 ML', 4, '2026-04-22 07:46:31', '2026-04-22 07:46:31'),
+(74, 19, '150 ML', 5, '2026-04-22 07:46:31', '2026-04-22 07:46:31'),
+(75, 19, '200 ML', 6, '2026-04-22 07:46:31', '2026-04-22 07:46:31'),
+(76, 19, '300 ML', 7, '2026-04-22 07:46:31', '2026-04-22 07:46:31'),
+(77, 20, '250 ML', 0, '2026-04-22 07:47:55', '2026-04-22 07:47:55'),
+(78, 20, '400 ML', 1, '2026-04-22 07:47:55', '2026-04-22 07:47:55'),
+(79, 21, '10 ML', 0, '2026-04-22 07:50:08', '2026-04-22 07:50:08'),
+(80, 21, '20 ML', 1, '2026-04-22 07:50:08', '2026-04-22 07:50:08'),
+(81, 21, '30 ML', 2, '2026-04-22 07:50:09', '2026-04-22 07:50:09'),
+(82, 22, 'L Shape Standard size', 0, '2026-04-22 07:52:16', '2026-04-22 07:52:16'),
+(83, 24, '13\"', 0, '2026-04-22 07:55:02', '2026-04-22 07:55:02'),
+(84, 24, '17\"', 1, '2026-04-22 07:55:03', '2026-04-22 07:55:03'),
+(85, 25, 'Small', 0, '2026-04-22 07:59:19', '2026-04-22 07:59:19'),
+(86, 25, 'Medium', 1, '2026-04-22 07:59:19', '2026-04-22 07:59:19'),
+(87, 25, 'Large', 2, '2026-04-22 07:59:19', '2026-04-22 07:59:19'),
+(88, 26, 'Standard', 0, '2026-04-22 08:01:47', '2026-04-22 08:01:47'),
+(89, 27, '2.0  inch', 0, '2026-04-22 08:05:43', '2026-04-22 08:05:43'),
+(90, 27, '2.5 inch', 1, '2026-04-22 08:05:43', '2026-04-22 08:05:43'),
+(91, 27, '3.0 inch', 2, '2026-04-22 08:05:44', '2026-04-22 08:05:44'),
+(92, 27, '3.50 inch', 3, '2026-04-22 08:05:44', '2026-04-22 08:05:44'),
+(94, 30, 'Standard', 0, '2026-04-22 08:11:32', '2026-04-22 08:11:32'),
+(95, 31, 'Standard', 0, '2026-04-22 08:12:37', '2026-04-22 08:12:37'),
+(96, 32, '2 INCH', 0, '2026-04-22 08:15:02', '2026-04-22 08:15:02'),
+(97, 32, '2.5 INCH', 1, '2026-04-22 08:15:02', '2026-04-22 08:15:02'),
+(98, 32, '3.0 INCH', 2, '2026-04-22 08:15:02', '2026-04-22 08:15:02'),
+(99, 32, '3.5 INCH', 3, '2026-04-22 08:15:02', '2026-04-22 08:15:02'),
+(100, 32, '4.0 INCH', 4, '2026-04-22 08:15:02', '2026-04-22 08:15:02'),
+(101, 33, '2 INCH', 0, '2026-04-22 08:17:29', '2026-04-22 08:17:29'),
+(102, 33, '2.5 INCH', 1, '2026-04-22 08:17:29', '2026-04-22 08:17:29'),
+(103, 33, '3.0 INCH', 2, '2026-04-22 08:17:29', '2026-04-22 08:17:29'),
+(104, 33, '3.5 INCH', 3, '2026-04-22 08:17:29', '2026-04-22 08:17:29'),
+(105, 33, '4.0 INCH', 4, '2026-04-22 08:17:29', '2026-04-22 08:17:29'),
+(106, 35, '9 INCH', 0, '2026-04-22 08:21:47', '2026-04-22 08:21:47'),
+(107, 35, '12 INCH', 1, '2026-04-22 08:21:48', '2026-04-22 08:21:48'),
+(108, 35, '14 INCH', 2, '2026-04-22 08:21:48', '2026-04-22 08:21:48'),
+(109, 35, '16 INCH', 3, '2026-04-22 08:21:48', '2026-04-22 08:21:48'),
+(110, 35, '19 INCH', 4, '2026-04-22 08:21:48', '2026-04-22 08:21:48'),
+(121, 36, '9 INCH', 0, '2026-04-22 08:24:43', '2026-04-22 08:24:43'),
+(122, 36, '12 INCH', 1, '2026-04-22 08:24:44', '2026-04-22 08:24:44'),
+(123, 36, '14 INCH', 2, '2026-04-22 08:24:44', '2026-04-22 08:24:44'),
+(124, 36, '16 INCH', 3, '2026-04-22 08:24:44', '2026-04-22 08:24:44'),
+(125, 36, '19 INCH', 4, '2026-04-22 08:24:44', '2026-04-22 08:24:44'),
+(132, 37, '0.50cc', 0, '2026-04-22 09:07:43', '2026-04-22 09:07:43'),
+(133, 37, '0.25cc', 1, '2026-04-22 09:07:44', '2026-04-22 09:07:44'),
+(134, 37, 'Universal', 2, '2026-04-22 09:07:44', '2026-04-22 09:07:44'),
+(135, 39, 'Length of Barrel 440 mm', 0, '2026-04-22 09:23:42', '2026-04-22 09:23:42'),
+(136, 39, 'Outer Diameter of Barrel 3.70 mm', 1, '2026-04-22 09:23:42', '2026-04-22 09:23:42'),
+(137, 39, 'Total Length of Plunger 450 mm', 2, '2026-04-22 09:23:42', '2026-04-22 09:23:42'),
+(138, 39, 'Length and other specifications may be customised for bulk orders', 3, '2026-04-22 09:23:42', '2026-04-22 09:23:42'),
+(151, 43, '5 ML', 0, '2026-04-22 09:59:11', '2026-04-22 09:59:11'),
+(152, 43, '10 ML', 1, '2026-04-22 09:59:11', '2026-04-22 09:59:11'),
+(153, 43, '20 ML', 2, '2026-04-22 09:59:11', '2026-04-22 09:59:11'),
+(154, 43, '30 ML', 3, '2026-04-22 09:59:12', '2026-04-22 09:59:12');
 
 -- --------------------------------------------------------
 
@@ -366,7 +473,7 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('9Coedq0tH2QO0F0Ds5VSDvRTMLjEeWFZn9FYg1i0', 4, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoidk5TcW1WelRncDMyN3lOcXhxa3BFWUV6NENmMWZoaE5DOEVWWjhHUSI7czo5OiJfcHJldmlvdXMiO2E6Mjp7czozOiJ1cmwiO3M6MjE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMCI7czo1OiJyb3V0ZSI7czo0OiJob21lIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6NDt9', 1776691402);
+('6sl0eZhOYhPiKQfDdFCZQzjkzso8RQfxqubGn48O', 4, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiVzVFcFVkM2Q5YXE0V1huOU1aZ203WkJrQUtCNHNzZjhDTHp2bXFqNiI7czo5OiJfcHJldmlvdXMiO2E6Mjp7czozOiJ1cmwiO3M6MzY6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9hZG1pbi9wcm9kdWN0cyI7czo1OiJyb3V0ZSI7czoyMDoiYWRtaW4ucHJvZHVjdHMuaW5kZXgiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX1zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aTo0O30=', 1776866526);
 
 -- --------------------------------------------------------
 
@@ -540,7 +647,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `contacts`
@@ -582,19 +689,19 @@ ALTER TABLE `newsletter_subscribers`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 
 --
 -- AUTO_INCREMENT for table `product_images`
 --
 ALTER TABLE `product_images`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
 
 --
 -- AUTO_INCREMENT for table `product_options`
 --
 ALTER TABLE `product_options`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=155;
 
 --
 -- AUTO_INCREMENT for table `testimonials`
