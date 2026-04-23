@@ -53,11 +53,17 @@
             {{-- Column 3: Categories --}}
             <div>
                 <h4 class="text-xs font-black uppercase tracking-[0.3em] text-[#2F6B3B]">Categories</h4>
+
                 <ul class="mt-6 space-y-4 text-sm font-semibold text-[#4B5563]">
-                    <li><a href="{{ route('products.byCategory', 1) }}">Dental Instruments</a></li> <!-- id = 1 -->
-                    <li><a href="{{ route('products.byCategory', 2) }}">Veterinary  Instruments</a></li>
-                    <li><a href="{{ route('products.byCategory', 3) }}">Hunting Knives</a></li>
-                    <!-- <li><a href="{{ route('products.byCategory', 4) }}">Animal Nutrition</a></li> -->
+                    @forelse($categories as $category)
+                        <li>
+                            <a href="{{ route('products.byCategory', $category->id) }}">
+                                {{ $category->name }}
+                            </a>
+                        </li>
+                    @empty
+                        <li>No categories found.</li>
+                    @endforelse
                 </ul>
             </div>
 
