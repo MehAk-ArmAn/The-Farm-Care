@@ -1,0 +1,4 @@
+<?php
+namespace App\Http\Controllers\Admin;
+use App\Http\Controllers\Controller; use App\Models\Inquiry; use Illuminate\Http\Request;
+class InquiryController extends Controller { public function index(Request $r){$q=Inquiry::with('product')->latest();if($r->filled('type'))$q->where('type',$r->type);if($r->filled('status'))$q->where('status',$r->status);return view('admin.inquiries.index',['inquiries'=>$q->paginate(30)->withQueryString()]);} public function show(Inquiry $inquiry){return view('admin.inquiries.show',compact('inquiry'));} public function update(Request $r,Inquiry $inquiry){$d=$r->validate(['status'=>'required|in:new,in_progress,answered,closed','admin_notes'=>'nullable|max:5000']);$inquiry->update($d);return back()->with('success','Inquiry updated.');} public function destroy(Inquiry $inquiry){$inquiry->delete();return redirect()->route('admin.inquiries.index')->with('success','Inquiry deleted.');} }
